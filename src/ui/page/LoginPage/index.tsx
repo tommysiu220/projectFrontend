@@ -1,6 +1,6 @@
 import {Button, Container, Grid, TextField, Typography} from "@mui/material";
 import React from "react";
-import NavBar2 from "../../component/NavBar2.tsx";
+import NavBar2 from "../../component/NavBar/NavBar2.tsx";
 
 export default function LoginPage(){
     return(
