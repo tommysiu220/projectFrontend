@@ -1,4 +1,4 @@
-import { useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import NavBar2 from "../../component/NavBar/NavBar2.tsx";
 import {useEffect, useState} from "react";
 import {ProductDto} from "../../../data/ProductDto.Type.ts";
@@ -13,6 +13,7 @@ type params = {
 export default function ProductDetailPage(){
     const params = useParams<params>();
     const [getProductByPid, setGetProductByPid] = useState<ProductDto | undefined>(undefined);
+    const navigate = useNavigate();
 
     const fetchGetProductByPid = async () => {
         try {
@@ -21,6 +22,7 @@ export default function ProductDetailPage(){
             setGetProductByPid(responseGetAllProductDto);
         } catch (error) {
             // navigate to error page
+            navigate("/error");
         }
     }
 

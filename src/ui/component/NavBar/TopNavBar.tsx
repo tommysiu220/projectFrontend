@@ -5,6 +5,7 @@ import {Link} from "react-router-dom";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import navbarBackground from './DOUBLESHOT.png'
+import navbarLogo from './navbarBackground2.png'
 
 const TopNavBar = () => {
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -19,9 +20,12 @@ const TopNavBar = () => {
 
     return (
         <>
+            <div style={{backgroundColor: "black", display: "flex", justifyContent: 'center'}}>
+                <img height="100px" src={navbarLogo}/>
+            </div>
 
-            <AppBar position="static" sx={{ bgcolor: "black" }}>
-                <Toolbar sx={{display: "flex", height:80}}>
+            <AppBar position="static" sx={{bgcolor: "black"}}>
+                <Toolbar sx={{display: "flex", height: 80}}>
                     <div style={{width: "25vw", display: "flex", alignItems: 'center'}}>
                         <IconButton
                             color="inherit"
