@@ -1,10 +1,10 @@
 import React from 'react';
-import {AppBar, Toolbar, IconButton, Typography, Button, Menu, MenuItem} from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
+import {AppBar, Toolbar, IconButton,Button, Menu, MenuItem} from '@mui/material';
 import {Link} from "react-router-dom";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import navbarBackground from './DOUBLESHOT.png'
+import navbarLogo from './blackballBackground.jpeg'
 
 const TopNavBar = () => {
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -19,9 +19,12 @@ const TopNavBar = () => {
 
     return (
         <>
+            <div style={{backgroundColor: "black", display: "flex", justifyContent: 'center'}}>
+                {/*<img height="60px" src={navbarLogo}/>*/}
+            </div>
 
-            <AppBar position="static" sx={{ bgcolor: "black" }}>
-                <Toolbar sx={{display: "flex", height:80}}>
+            <AppBar position="static" sx={{bgcolor: "black"}}>
+                <Toolbar sx={{display: "flex", height: 60}}>
                     <div style={{width: "25vw", display: "flex", alignItems: 'center'}}>
                         <IconButton
                             color="inherit"
@@ -44,15 +47,13 @@ const TopNavBar = () => {
 
                     </div>
                     <div style={{width: "50vw", display: "flex", justifyContent: 'center', alignItems: 'center'}}>
-                        {/*<Typography variant="h6" component="div">*/}
-                        {/*    DoubleShot*/}
-                        {/*</Typography>*/}
-                        <img height="80px" src={navbarBackground}/>
+                        <img height="60px" src={navbarLogo}/>
+                        <img height="60px" src={navbarBackground}/>
                     </div>
 
                     <div style={{width: "25vw", display: "flex", justifyContent: 'right'}}>
-                        <Button color="primary" sx={{height: 24, padding: 0}} disableRipple>
-                            <Link style={{height: 24}} to="/login"><AccountCircleIcon/></Link>
+                        <Button color="primary" sx={{height: 24, padding: 0}}>
+                            <Link style={{height: 24, color:"white"}} to="/login" className="nav-link"><AccountCircleIcon/></Link>
 
                         </Button>
                     </div>

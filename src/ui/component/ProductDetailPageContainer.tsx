@@ -8,15 +8,16 @@ type Props = {
 
 const ProductDetailPageContainer = ({productDto}: Props) => {
 
+
     const [count, setCount] = useState(1);
 
     const increment = () => {
-        setCount(count + 1);
+        setCount((prevState) => (prevState + 1));
     };
 
     const decrement = () => {
         if (count > 1) {
-            setCount(count - 1);
+            setCount((prevState) => (prevState - 1));
         }
     };
 
@@ -27,14 +28,14 @@ const ProductDetailPageContainer = ({productDto}: Props) => {
         }
     };
 
-    const  description  =productDto.description;
+    const description = productDto.description;
 
     const formattedDescription = description.replace(/\\n/g, '<br>');
 
     return (
 
         <>
-            <Container >
+            <Container>
                 <Box
                     sx={{
                         display: 'flex',
@@ -47,11 +48,14 @@ const ProductDetailPageContainer = ({productDto}: Props) => {
                     <img height="650px" src={`/${productDto.image_url}`}></img>
                     <div>
                         <h2>{productDto.product_name}</h2>
-                        <Typography dangerouslySetInnerHTML={{ __html: formattedDescription }}/>
-                        <h5>Price: ${productDto.price}</h5>
+                        {/*<Typography dangerouslySetInnerHTML={{__html: formattedDescription}} sx={{whiteSpace:"pre-line"}}/>*/}
+                        <Typography sx={{whiteSpace:"pre-line"}}>
+                            {productDto.description}
+                        </Typography>
+                        <h5>Price: ${productDto.price.toLocaleString()}</h5>
 
-                        <Typography variant="body1" color={productDto.stock>0 ? 'black' : 'red'}>
-                            {productDto.stock >0 ? 'In Stock'  : 'Out of Stock'}
+                        <Typography variant="body1" color={productDto.stock > 0 ? 'black' : 'red'}>
+                            {productDto.stock > 0 ? 'In Stock' : 'Out of Stock'}
                         </Typography>
 
                         <div>
@@ -64,6 +68,7 @@ const ProductDetailPageContainer = ({productDto}: Props) => {
 
                             />
                             <button onClick={increment}>+</button>
+
                         </div>
                     </div>
                 </Box>

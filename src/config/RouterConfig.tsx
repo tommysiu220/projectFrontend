@@ -6,13 +6,15 @@ import ShoppingCartPage from "../ui/page/ShoppingCartPage";
 import CheckoutPage from "../ui/page/CheckoutPage";
 import LoginPage from "../ui/page/LoginPage";
 import ThankyouPage from "../ui/page/ThankYouPage";
+import ErrorPage from "../ui/page/ErrorPage";
 
 
 
 export const router = createBrowserRouter([
     {
         path: "/",
-        element: <ProductListingPage/>
+        element: <ProductListingPage/>,
+        errorElement:<ErrorPage/>
     },
     {
         path: "/product/:pid",
@@ -33,5 +35,9 @@ export const router = createBrowserRouter([
     {
         path: "/thankyou",
         element: <ThankyouPage/>
+    },
+    {
+        path: "/error",
+        element: <ErrorPage/>
     },
 ])

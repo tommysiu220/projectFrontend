@@ -1,9 +1,11 @@
 import axios from "axios";
 import {ProductDto} from "../data/ProductDto.Type.ts";
 
+const baseUrl = "http://localhost:8080"
+
 export const getAllProduct = async (): Promise<ProductDto[]> => {
     try {
-        const apiUrl = "http://localhost:8080/public/product";
+        const apiUrl = baseUrl+"/public/product";
         const response = await axios.get<ProductDto[]>(apiUrl);
         return response.data;
     } catch (error) {
@@ -12,9 +14,9 @@ export const getAllProduct = async (): Promise<ProductDto[]> => {
     }
 }
 
-export const getProductByPid = async (pid:number): Promise<ProductDto> => {
+export const getProductByPid = async (pid:string): Promise<ProductDto> => {
     try {
-        const apiUrl = `http://localhost:8080/public/product/${pid}`;
+        const apiUrl = baseUrl+`/public/product/${pid}`;
         const response = await axios.get<ProductDto>(apiUrl);
         return response.data;
     } catch (error) {

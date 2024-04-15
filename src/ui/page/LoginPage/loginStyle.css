@@ -1,0 +1,19 @@
+.loginPageContainer{
+    height: 100vh;
+    margin: 0; /* Remove default margin */
+    padding: 0;
+    background-image: url('src/ui/component/NavBar/blackballBackground.jpeg');
+    background-size: cover; /* Cover the entire container */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Prevent the background image from repeating */
+    opacity: 0.9;
+}
+
+.container{
+    background-color: rgb(255, 255, 255,0.5);
+    border: 2px white solid;
+    border-radius: 16px;
+    padding: 16px;
+    color: white;
+}
+
