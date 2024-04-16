@@ -1,14 +1,13 @@
-import TopNavBar from "../../component/NavBar/TopNavBar.tsx";
+import TopNavBar from "../../component/NavBar/NavBar.tsx";
 import {Box, Container} from "@mui/material";
 import CardGrid from "../../component/CardGrid.tsx";
 import {ProductDto} from "../../../data/ProductDto.Type.ts";
 import {useEffect, useState} from "react";
 import * as ProductDtoApi from "../../../api/ProductApi.ts"
-import {useNavigate} from "react-router-dom";
+import {HeadBanner} from "../../component/HeadBanner.tsx";
 
 export default function ProductListingPage(){
     const [getAllProductDto, setGetAllProductDto] = useState<ProductDto[] | undefined>(undefined);
-    const navigate = useNavigate();
 
     const fetchGetAllProductDto = async () => {
         try {
@@ -17,7 +16,6 @@ export default function ProductListingPage(){
             setGetAllProductDto(responseGetAllProductDto);
         } catch (error) {
             // navigate to error page
-            navigate("/error");
         }
     }
 
@@ -40,9 +38,10 @@ export default function ProductListingPage(){
 
     return(
         <Box>
+            <HeadBanner/>
             <TopNavBar/>
-            <Container>
-                <h1 style={{marginTop:"16px"}}>Product Listing</h1>
+            <Container >
+                <h1>Product Listing</h1>
                 {
                     getAllProductDto
                         ?<CardGrid getAllProductDtoList={getAllProductDto}/>

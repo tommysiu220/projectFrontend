@@ -1,0 +1,21 @@
+
+/*.inputfield{*/
+/*    margin-top: 24px;*/
+/*    margin-bottom: 24px;*/
+/*}*/
+body{
+    height: 100vh;
+    margin: 0; /* Remove default margin */
+    padding: 0;
+    background-image: url('loginBackground.jpg');
+    background-size: cover; /* Cover the entire container */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Prevent the background image from repeating */
+}
+
+.container{
+    background-color: rgba(255, 255, 255, 0.75);
+    border: 2px grey solid;
+    border-radius: 16px;
+    padding: 16px;
+}
