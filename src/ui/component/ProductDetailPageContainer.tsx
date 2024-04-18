@@ -1,5 +1,5 @@
-import {ProductDto} from "../../data/ProductDto.Type.ts";
-import {Box, Container, Typography} from "@mui/material";
+import {ProductDto} from "../../data/product/ProductDto.Type.ts";
+import {Box, Container, TextField, Typography} from "@mui/material";
 import {useState} from "react";
 
 type Props = {
@@ -8,25 +8,43 @@ type Props = {
 
 const ProductDetailPageContainer = ({productDto}: Props) => {
 
-
-    const [count, setCount] = useState(1);
+    const [quantity, setQuantity] = useState(1);
 
     const increment = () => {
-        setCount((prevState) => (prevState + 1));
+        setQuantity((prevState) => (prevState + 1));
     };
 
     const decrement = () => {
-        if (count > 1) {
-            setCount((prevState) => (prevState - 1));
+        if (quantity > 1) {
+            setQuantity((prevState) => (prevState - 1));
         }
     };
 
-    const handleInputChange = (event) => {
+    const handleQuantityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const value = parseInt(event.target.value);
         if (!isNaN(value)) {
-            setCount(value);
+            setQuantity(value);
         }
     };
+
+    const minusButtonStyle = {
+        height: "36px",
+        width: "36px",
+        borderRadius: 0,
+        border: "black 2px solid",
+        backgroundColor: "white",
+        borderRight:0,
+        outline: "none"
+    }
+    const plusButtonStyle = {
+        height: "36px",
+        width: "36px",
+        borderRadius: 0,
+        border: "black 2px solid",
+        backgroundColor: "white",
+        borderLeft:0,
+        outline: "none"
+    }
 
     const description = productDto.description;
 
@@ -45,11 +63,14 @@ const ProductDetailPageContainer = ({productDto}: Props) => {
                         height: 'auto', // for example, to make the container fill the viewport height
                     }}
                 >
-                    <img height="650px" src={`/${productDto.image_url}`}></img>
-                    <div>
+                    <div style={{marginTop: "16px"}}>
+                        <img height="650px" src={`/${productDto.image_url}`}/>
+                    </div>
+
+                    <div style={{marginTop: "16px"}}>
                         <h2>{productDto.product_name}</h2>
                         {/*<Typography dangerouslySetInnerHTML={{__html: formattedDescription}} sx={{whiteSpace:"pre-line"}}/>*/}
-                        <Typography sx={{whiteSpace:"pre-line"}}>
+                        <Typography sx={{whiteSpace: "pre-line"}}>
                             {productDto.description}
                         </Typography>
                         <h5>Price: ${productDto.price.toLocaleString()}</h5>
@@ -59,15 +80,36 @@ const ProductDetailPageContainer = ({productDto}: Props) => {
                         </Typography>
 
                         <div>
-                            <button onClick={decrement}>-</button>
-                            <input
-                                type="number"
-                                value={count}
-                                onChange={handleInputChange}
-                                min={1} // Ensure the minimum value is 1
+                            <button onClick={decrement}
+                                    style={minusButtonStyle}>
+                                -
+                            </button>
 
+                            {/*<TextField*/}
+                            {/*    sx={{height: "24px"}}*/}
+                            {/*    value={count}*/}
+                            {/*    onChange={(e) => setCount(parseInt(e.target.value))}*/}
+                            {/*/>*/}
+                                <input style={{
+                                    height: "36px",
+                                    width: "48px",
+                                    borderRadius: 0,
+                                    border: "2px black solid",
+                                    backgroundColor: "white",
+                                    boxSizing: "border-box",
+                                    borderLeft: 0,
+                                    borderRight: 0,
+                                    textAlign: "center",
+                                    outline: "none"
+                                }}
+                                        value={quantity}
+                                        onChange={handleQuantityChange}
                             />
-                            <button onClick={increment}>+</button>
+
+                            <button onClick={increment}
+                                    style={plusButtonStyle}>
+                                +
+                            </button>
 
                         </div>
                     </div>

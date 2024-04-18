@@ -1,7 +1,13 @@
+import TopNavBar from "../../component/NavBar/TopNavBar.tsx";
+import {Typography} from "@mui/material";
+
 export default function ShoppingCartPage(){
     return(
         <>
-            <h1>Shopping Cart</h1>
+            <TopNavBar/>
+            <Typography variant="h1">
+                Shopping Cart
+            </Typography>
         </>
     )
 }

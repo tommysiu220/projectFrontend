@@ -1,5 +1,5 @@
 import axios from "axios";
-import {ProductDto} from "../data/ProductDto.Type.ts";
+import {ProductDto} from "../data/product/ProductDto.Type.ts";
 
 const baseUrl = "http://localhost:8080"
 

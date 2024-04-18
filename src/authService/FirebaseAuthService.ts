@@ -7,7 +7,7 @@ import {
     signInWithEmailAndPassword,
     signInWithPopup, signOut
 } from "firebase/auth";
-import {UserData} from "../data/UserData";
+import {UserData} from "../data/user/UserData.ts";
 
 
 export const serviceInit = () => {

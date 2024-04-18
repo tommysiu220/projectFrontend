@@ -1,6 +1,6 @@
 import React from 'react';
 import {Grid, Card, CardContent, Typography, CardMedia} from '@mui/material';
-import {ProductDto} from "../../data/ProductDto.Type.ts";
+import {ProductDto} from "../../data/product/ProductDto.Type.ts";
 import {Link} from "react-router-dom";
 
 type Props = {

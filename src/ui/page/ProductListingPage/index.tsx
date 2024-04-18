@@ -1,12 +1,12 @@
-import TopNavBar from "../../component/NavBar/NavBar.tsx";
+import TopNavBar from "../../component/NavBar/TopNavBar.tsx";
 import {Box, Container} from "@mui/material";
 import CardGrid from "../../component/CardGrid.tsx";
-import {ProductDto} from "../../../data/ProductDto.Type.ts";
+import {ProductDto} from "../../../data/product/ProductDto.Type.ts";
 import {useEffect, useState} from "react";
 import * as ProductDtoApi from "../../../api/ProductApi.ts"
-import {HeadBanner} from "../../component/HeadBanner.tsx";
+import LoadingPage from "../LoadingPage/LoadingPage.tsx";
 
-export default function ProductListingPage(){
+export default function ProductListingPage() {
     const [getAllProductDto, setGetAllProductDto] = useState<ProductDto[] | undefined>(undefined);
 
     const fetchGetAllProductDto = async () => {
@@ -14,13 +14,14 @@ export default function ProductListingPage(){
             setGetAllProductDto(undefined);
             const responseGetAllProductDto = await ProductDtoApi.getAllProduct();
             setGetAllProductDto(responseGetAllProductDto);
+
         } catch (error) {
             // navigate to error page
         }
     }
 
     useEffect(() => {
-        fetchGetAllProductDto();
+        setTimeout(fetchGetAllProductDto,1500);
     }, []);
 
     // const renderProductList = () => {
@@ -36,18 +37,21 @@ export default function ProductListingPage(){
     //     }
     // }
 
-    return(
+    return (
         <Box>
-            <HeadBanner/>
-            <TopNavBar/>
-            <Container >
-                <h1>Product Listing</h1>
-                {
-                    getAllProductDto
-                        ?<CardGrid getAllProductDtoList={getAllProductDto}/>
-                        : "GG"
-                }
-            </Container>
+
+            {
+                getAllProductDto
+                    ? (
+                        <div>
+                            <TopNavBar/>
+                            <Container sx={{marginTop:4}}>
+                                <CardGrid getAllProductDtoList={getAllProductDto}/>
+                            </Container></div>
+                    )
+                    : <LoadingPage/>
+            }
+
         </Box>
     )
 }

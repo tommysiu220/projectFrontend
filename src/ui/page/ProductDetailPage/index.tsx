@@ -1,10 +1,10 @@
 import {useNavigate, useParams} from "react-router-dom";
-import NavBar2 from "../../component/NavBar/NavBar2.tsx";
 import {useEffect, useState} from "react";
-import {ProductDto} from "../../../data/ProductDto.Type.ts";
+import {ProductDto} from "../../../data/product/ProductDto.Type.ts";
 import * as ProductDtoApi from "../../../api/ProductApi.ts";
 import ProductDetailPageContainer from "../../component/ProductDetailPageContainer.tsx";
 import TopNavBar from "../../component/NavBar/TopNavBar.tsx";
+import LoadingPage from "../LoadingPage/LoadingPage.tsx";
 
 type params = {
     pid: string,
@@ -36,14 +36,12 @@ export default function ProductDetailPage(){
     }, []);
 
     return(
-
         <>
-
             <TopNavBar/>
             {
                 getProductByPid
                 ? <ProductDetailPageContainer productDto={getProductByPid}/>
-                    :"Loading..."
+                : <LoadingPage/>
             }
         </>
     )
