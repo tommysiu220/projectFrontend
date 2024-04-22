@@ -11,8 +11,7 @@
 
 .container{
     background-color: rgb(255, 255, 255,0.5);
-    border: 2px white solid;
-    border-radius: 16px;
+    border: 4px white solid;
     padding: 16px;
     color: white;
 }

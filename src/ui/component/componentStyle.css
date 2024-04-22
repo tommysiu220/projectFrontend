@@ -2,3 +2,10 @@ a.nav-link {
     text-decoration: none; /* Remove underline */
     color: inherit; /* Use the parent element's color */
 }
+
+.disabled-button {
+    pointer-events: none; /* Disable pointer events */
+    opacity: 1; /* Reduce opacity to visually indicate the disabled state */
+    cursor: not-allowed; /* Change cursor to indicate not clickable */
+    color: black;
+}

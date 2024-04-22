@@ -1,6 +1,5 @@
 import ProductListingPage from "../ui/page/ProductListingPage";
 import {createBrowserRouter} from "react-router-dom";
-import React from "react";
 import ProductDetailPage from "../ui/page/ProductDetailPage";
 import ShoppingCartPage from "../ui/page/ShoppingCartPage";
 import CheckoutPage from "../ui/page/CheckoutPage";

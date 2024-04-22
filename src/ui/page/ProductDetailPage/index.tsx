@@ -15,7 +15,7 @@ export default function ProductDetailPage(){
     const [getProductByPid, setGetProductByPid] = useState<ProductDto | undefined>(undefined);
     const navigate = useNavigate();
 
-    const fetchGetProductByPid = async (pid) => {
+    const fetchGetProductByPid = async (pid:string) => {
         try {
             setGetProductByPid(undefined);
             const responseGetAllProductDto = await ProductDtoApi.getProductByPid(pid);

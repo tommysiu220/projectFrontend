@@ -8,6 +8,7 @@ import {LoginUserContext} from "./context/LoginUserContext.ts";
 
 function App() {
     const [loginUser, setLoginUser] = useState<UserData | null | undefined>(undefined);
+
     useEffect(() => {
         FirebaseAuthService.handleOnAuthStateChanged(setLoginUser);
     }, []);

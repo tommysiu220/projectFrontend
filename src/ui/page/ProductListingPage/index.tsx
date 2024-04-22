@@ -5,9 +5,11 @@ import {ProductDto} from "../../../data/product/ProductDto.Type.ts";
 import {useEffect, useState} from "react";
 import * as ProductDtoApi from "../../../api/ProductApi.ts"
 import LoadingPage from "../LoadingPage/LoadingPage.tsx";
+import {useNavigate} from "react-router-dom";
 
 export default function ProductListingPage() {
     const [getAllProductDto, setGetAllProductDto] = useState<ProductDto[] | undefined>(undefined);
+    const navigate = useNavigate();
 
     const fetchGetAllProductDto = async () => {
         try {
@@ -17,6 +19,7 @@ export default function ProductListingPage() {
 
         } catch (error) {
             // navigate to error page
+            navigate("/error");
         }
     }
 

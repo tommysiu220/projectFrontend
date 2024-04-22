@@ -1,14 +1,20 @@
 import {ProductDto} from "../../data/product/ProductDto.Type.ts";
-import {Box, Container, TextField, Typography} from "@mui/material";
-import {useState} from "react";
+import {Box, Container, Typography} from "@mui/material";
+import {ChangeEvent, useState} from "react";
+import * as CartItemApi from "../../api/CartItemApi.ts"
+import {useNavigate} from "react-router-dom";
+import {QuantitySelector} from "./QuantitySelector.tsx";
+import AddToCartSuccessSnackbar from "./AddToCartSuccessSnackbar.tsx";
 
 type Props = {
     productDto: ProductDto;
 }
 
 const ProductDetailPageContainer = ({productDto}: Props) => {
-
-    const [quantity, setQuantity] = useState(1);
+    const [quantity, setQuantity] = useState<number>(1);
+    const [isAddingToCart, setIsAddingToCart] = useState<boolean>(false);
+    const [snackbarOpen, setSnackbarOpen] = useState<boolean>(false);
+    const navigate = useNavigate();
 
     const increment = () => {
         setQuantity((prevState) => (prevState + 1));
@@ -20,35 +26,42 @@ const ProductDetailPageContainer = ({productDto}: Props) => {
         }
     };
 
-    const handleQuantityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleQuantityChange = (event: ChangeEvent<HTMLInputElement>) => {
         const value = parseInt(event.target.value);
         if (!isNaN(value)) {
             setQuantity(value);
         }
     };
 
-    const minusButtonStyle = {
-        height: "36px",
-        width: "36px",
-        borderRadius: 0,
-        border: "black 2px solid",
-        backgroundColor: "white",
-        borderRight:0,
-        outline: "none"
+    // const minusButtonStyle = {
+    //     height: "36px",
+    //     width: "36px",
+    //     borderRadius: 0,
+    //     border: "black 2px solid",
+    //     backgroundColor: "white",
+    //     borderRight: 0,
+    //     outline: "none"
+    // }
+    // const plusButtonStyle = {
+    //     height: "36px",
+    //     width: "36px",
+    //     borderRadius: 0,
+    //     border: "black 2px solid",
+    //     backgroundColor: "white",
+    //     borderLeft: 0,
+    //     outline: "none"
+    // }
+    const handleAddToCart = async (pid: number, quantity: number) => {
+        try {
+            setIsAddingToCart(true);
+            await CartItemApi.putCartItem(pid, quantity);
+            console.log("Successfully Added")
+            setIsAddingToCart(false);
+            setSnackbarOpen(true);
+        } catch (error) {
+            navigate("/error")
+        }
     }
-    const plusButtonStyle = {
-        height: "36px",
-        width: "36px",
-        borderRadius: 0,
-        border: "black 2px solid",
-        backgroundColor: "white",
-        borderLeft:0,
-        outline: "none"
-    }
-
-    const description = productDto.description;
-
-    const formattedDescription = description.replace(/\\n/g, '<br>');
 
     return (
 
@@ -58,7 +71,6 @@ const ProductDetailPageContainer = ({productDto}: Props) => {
                     sx={{
                         display: 'flex',
                         flexDirection: 'row', // or 'column' for vertical layout
-                        // alignItems: 'center', // or 'flex-start', 'flex-end', 'baseline', 'stretch'
                         justifyContent: 'space-between', // or 'center', 'flex-start', 'flex-end', 'space-around', 'space-evenly'
                         height: 'auto', // for example, to make the container fill the viewport height
                     }}
@@ -79,42 +91,38 @@ const ProductDetailPageContainer = ({productDto}: Props) => {
                             {productDto.stock > 0 ? 'In Stock' : 'Out of Stock'}
                         </Typography>
 
-                        <div>
-                            <button onClick={decrement}
-                                    style={minusButtonStyle}>
-                                -
-                            </button>
+                        {
+                            productDto.stock > 0
+                                ? <div style={{display: "flex", justifyContent: "space-between"}}>
+                                    <QuantitySelector initQuantity={quantity}
+                                                      increment={increment}
+                                                      decrement={decrement}
+                                                      isPatching={false}
+                                                      handleQuantityChange={handleQuantityChange}
+                                    />
+                                    <button style={{
+                                        height: "36px",
+                                        width: "112px",
+                                        borderRadius: 0,
+                                        border: "2px black solid",
+                                        backgroundColor: "white",
+                                        textAlign: "center",
+                                        outline: "none"
+                                    }}
+                                            onClick={() => {
+                                                handleAddToCart(productDto.pid, quantity)
+                                            }}
+                                            disabled={isAddingToCart}
+                                    >
+                                        ADD TO CART
+                                    </button>
+                                </div>
+                                : <></>
+                        }
 
-                            {/*<TextField*/}
-                            {/*    sx={{height: "24px"}}*/}
-                            {/*    value={count}*/}
-                            {/*    onChange={(e) => setCount(parseInt(e.target.value))}*/}
-                            {/*/>*/}
-                                <input style={{
-                                    height: "36px",
-                                    width: "48px",
-                                    borderRadius: 0,
-                                    border: "2px black solid",
-                                    backgroundColor: "white",
-                                    boxSizing: "border-box",
-                                    borderLeft: 0,
-                                    borderRight: 0,
-                                    textAlign: "center",
-                                    outline: "none"
-                                }}
-                                        value={quantity}
-                                        onChange={handleQuantityChange}
-                            />
-
-                            <button onClick={increment}
-                                    style={plusButtonStyle}>
-                                +
-                            </button>
-
-                        </div>
                     </div>
                 </Box>
-
+                <AddToCartSuccessSnackbar snackbarOpen={snackbarOpen} setSnackbarOpen={setSnackbarOpen}/>
             </Container>
         </>
     );

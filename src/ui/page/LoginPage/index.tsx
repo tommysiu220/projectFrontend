@@ -1,4 +1,4 @@
-import {Alert, Button, Container, Grid, styled, TextField, Typography} from "@mui/material";
+import {Alert, Button, Container, Grid, TextField, Typography} from "@mui/material";
 import './loginStyle.css'
 import {ChangeEvent, FormEvent, useContext, useEffect, useState} from "react";
 import * as FirebaseAuthService from "../../../authService/FirebaseAuthService.ts";
@@ -39,28 +39,6 @@ export default function LoginPage() {
         }
     }, [loginUser]);
 
-    const CssTextField = styled(TextField)({
-        '& label.Mui-focused': {
-            color: 'rgba(0,0,0,0.75)',
-        },
-        '& .MuiInput-underline:after': {
-            borderBottomColor: '#B2BAC2',
-        },
-        '& .MuiOutlinedInput-root': {
-            '& fieldset': {
-                borderColor: 'rgba(0,0,0,0.75)',
-            },
-            '&:hover fieldset': {
-                borderColor: 'rgba(0,0,0,0.75)',
-            },
-            '&.Mui-focused fieldset': {
-                borderColor: 'rgba(0,0,0,0.75)',
-            },
-        },
-        backgroundColor: "white",
-        color: "white",
-        borderRadius: "4px"
-    });
 
     return (
 
@@ -111,7 +89,6 @@ export default function LoginPage() {
                                     value={password}
                                     onChange={handlePasswordChange}
                                 />
-                                {/*<CssTextField fullWidth label="Custom CSS" id="custom-css-outlined-input"/>*/}
                             </Grid>
                             <Grid item xs={12} sx={{margin: '16px'}}>
                                 <Button

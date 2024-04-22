@@ -1,7 +1,7 @@
-import React from 'react';
 import {Grid, Card, CardContent, Typography, CardMedia} from '@mui/material';
 import {ProductDto} from "../../data/product/ProductDto.Type.ts";
 import {Link} from "react-router-dom";
+import './cardStyle.css'
 
 type Props = {
     getAllProductDtoList: ProductDto[]
@@ -9,11 +9,13 @@ type Props = {
 
 const CardGrid = ({getAllProductDtoList}: Props) => {
     return (
-        <Grid container spacing={8} >
+        <Grid container sx={{
+            my:4,
+        }}>
             {getAllProductDtoList.map(item => (
-                <Grid key={item.pid} item xs={4} sx={{padding: 0}}>
-                    <Card sx={{height:600, padding:0}}>
-                        <Link to={`/product/${item.pid}`} >
+                <Grid key={item.pid} item xs={4} sx={{padding: 2}}>
+                    <Card sx={{ padding:0}} >
+                        <Link to={`/product/${item.pid}`} className="nav-link">
                         <CardMedia
                             component="img"
                             height="400"
@@ -25,7 +27,7 @@ const CardGrid = ({getAllProductDtoList}: Props) => {
                                     {item.product_name}
                                 </Typography>
                                 <Typography variant="body2" color="text.secondary">
-                                    $ {item.price}
+                                    HKD {item.price}
                                 </Typography>
 
                         </CardContent>
