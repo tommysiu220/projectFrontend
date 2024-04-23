@@ -6,12 +6,12 @@ import ProductDetailPageContainer from "../../component/ProductDetailPageContain
 import TopNavBar from "../../component/NavBar/TopNavBar.tsx";
 import LoadingPage from "../LoadingPage/LoadingPage.tsx";
 
-type params = {
+type Params = {
     pid: string,
 }
 
 export default function ProductDetailPage(){
-    const {pid} = useParams<params>();
+    const {pid} = useParams<Params>();
     const [getProductByPid, setGetProductByPid] = useState<ProductDto | undefined>(undefined);
     const navigate = useNavigate();
 
