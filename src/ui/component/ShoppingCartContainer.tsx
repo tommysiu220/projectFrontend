@@ -19,6 +19,7 @@ const ShoppingCartContainer = ({cartItemDtoList, setCartItemDtoList}: Props) => 
     const [isPatching, setIsPatching] = useState<boolean>(false);
     const [successfulDelete, setSuccessfulDelete] = useState<boolean>(false);
     const [successfulPatch, setSuccessfulPatch] = useState<boolean>(false);
+    const [proceedToPay, setProceedToPay] = useState<boolean>(false);
     const navigate = useNavigate();
 
 
@@ -132,7 +133,8 @@ const ShoppingCartContainer = ({cartItemDtoList, setCartItemDtoList}: Props) => 
                                 <Grid sx={{my: 1}} container>
                                     <Grid item xs={3}
                                           sx={{display: "flex", alignItems: "center", justifyContent: "center"}}>
-                                        <img height="160px" src={`/${dto.image_url}`}/>
+                                        {/*<img height="160px" src={`/${dto.image_url}`}/>*/}
+                                        <img height="160px" src={dto.image_url}/>
                                     </Grid>
                                     <Grid item xs={4} sx={{display: "flex", alignItems: "center",}}>
                                         <Typography>
@@ -182,7 +184,12 @@ const ShoppingCartContainer = ({cartItemDtoList, setCartItemDtoList}: Props) => 
                 </Container>
                 <Container sx={{width: "30vw", height: "92vh", backgroundColor: 'rgb(245,245,245)'}}>
                     <Box sx={{height: "12vh"}}></Box>
-                    <Box sx={{display: "flex", flexDirection: "column", height:"32vh", justifyContent:"space-between"}}>
+                    <Box sx={{
+                        display: "flex",
+                        flexDirection: "column",
+                        height: "32vh",
+                        justifyContent: "space-between"
+                    }}>
                         <div>
                             <Typography variant="h5">
                                 SUMMARY
@@ -201,17 +208,17 @@ const ShoppingCartContainer = ({cartItemDtoList, setCartItemDtoList}: Props) => 
                                 </Grid>
                             </Grid>
                             <Grid container my={1}>
-                            <Grid item xs={6}>
-                                <Typography>
-                                    Discount
-                                </Typography>
+                                <Grid item xs={6}>
+                                    <Typography>
+                                        Discount
+                                    </Typography>
+                                </Grid>
+                                <Grid item xs={6} textAlign="right">
+                                    <Typography>
+                                        - HKD 0
+                                    </Typography>
+                                </Grid>
                             </Grid>
-                            <Grid item xs={6} textAlign="right">
-                                <Typography>
-                                    - HKD 0
-                                </Typography>
-                            </Grid>
-                        </Grid>
                         </div>
                         <div>
 
@@ -231,17 +238,22 @@ const ShoppingCartContainer = ({cartItemDtoList, setCartItemDtoList}: Props) => 
                         </div>
                         {
                             proceedToPay
+                                ?<div>pay</div>
+                                :<></>
                         }
-                        <div >
+                        <div>
                             <Divider sx={{my: 2, border: "1px black solid"}}/>
+
                             <button style={{
-                                width:"100%",
+                                width: "100%",
                                 backgroundColor: "black",
                                 color: "white",
                                 border: 0,
                                 fontSize: 20,
                                 padding: 8,
-                            }}> CHECK OUT
+                            }}
+                                    onClick={() => setProceedToPay(true)}>
+                                CHECK OUT
                             </button>
                         </div>
                     </Box>

@@ -76,7 +76,8 @@ const ProductDetailPageContainer = ({productDto}: Props) => {
                     }}
                 >
                     <div style={{marginTop: "16px"}}>
-                        <img height="650px" src={`/${productDto.image_url}`}/>
+                        {/*<img height="650px" src={`/${productDto.image_url}`}/>*/}
+                        <img height="650px" src={productDto.image_url}/>
                     </div>
 
                     <div style={{marginTop: "16px"}}>
