@@ -1,5 +1,5 @@
-import CheckoutContainer from "../../component/CheckoutContainer.tsx";
-import {useNavigate, useParams} from "react-router-dom";
+import CheckoutContainer from "../../component/CheckoutPage/CheckoutContainer.tsx";
+import { useParams} from "react-router-dom";
 import * as TransactionApi from '../../../api/TransactionApi.ts'
 import {useContext, useEffect, useState} from "react";
 import {TransactionDto} from "../../../data/transaction/TransactionDto.Type.ts";
@@ -16,20 +16,18 @@ export default function CheckoutPage() {
     const loginUser = useContext<UserData | undefined | null>(LoginUserContext)
     const [dto, setDto] = useState<TransactionDto | undefined>(undefined);
 
-    const navigate = useNavigate();
 
     const fetchTransactionDto = async (tid:string) => {
-        console.log(tid)
         const responseDto = await TransactionApi.getTransactionByTid(tid);
         setDto(responseDto);
-        console.log(responseDto);
 
     }
 
     useEffect(() => {
+        if (loginUser && params.transactionId)
             fetchTransactionDto(params.transactionId)
 
-    }, []);
+    }, [loginUser]);
     return (
         <>
             {

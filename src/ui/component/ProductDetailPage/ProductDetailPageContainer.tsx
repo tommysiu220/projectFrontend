@@ -1,9 +1,9 @@
-import {ProductDto} from "../../data/product/ProductDto.Type.ts";
-import {Box, Container, Typography} from "@mui/material";
+import {ProductDto} from "../../../data/product/ProductDto.Type.ts";
+import {Box, Button, Container, Typography} from "@mui/material";
 import {ChangeEvent, useState} from "react";
-import * as CartItemApi from "../../api/CartItemApi.ts"
+import * as CartItemApi from "../../../api/CartItemApi.ts"
 import {useNavigate} from "react-router-dom";
-import {QuantitySelector} from "./QuantitySelector.tsx";
+import {QuantitySelector} from "../QuantitySelector.tsx";
 import AddToCartSuccessSnackbar from "./AddToCartSuccessSnackbar.tsx";
 
 type Props = {
@@ -74,13 +74,14 @@ const ProductDetailPageContainer = ({productDto}: Props) => {
                         justifyContent: 'space-between', // or 'center', 'flex-start', 'flex-end', 'space-around', 'space-evenly'
                         height: 'auto', // for example, to make the container fill the viewport height
                     }}
+                    className={"container"}
                 >
                     <div style={{marginTop: "16px"}}>
                         {/*<img height="650px" src={`/${productDto.image_url}`}/>*/}
                         <img height="650px" src={productDto.image_url}/>
                     </div>
 
-                    <div style={{marginTop: "16px"}}>
+                    <div style={{marginTop: "16px",color:"black"}}>
                         <h2>{productDto.product_name}</h2>
                         {/*<Typography dangerouslySetInnerHTML={{__html: formattedDescription}} sx={{whiteSpace:"pre-line"}}/>*/}
                         <Typography sx={{whiteSpace: "pre-line"}}>
@@ -101,14 +102,15 @@ const ProductDetailPageContainer = ({productDto}: Props) => {
                                                       isPatching={false}
                                                       handleQuantityChange={handleQuantityChange}
                                     />
-                                    <button style={{
+                                    <Button style={{
                                         height: "36px",
                                         width: "112px",
                                         borderRadius: 0,
                                         border: "2px black solid",
                                         backgroundColor: "white",
                                         textAlign: "center",
-                                        outline: "none"
+                                        outline: "none",
+                                        color: "black",
                                     }}
                                             onClick={() => {
                                                 handleAddToCart(productDto.pid, quantity)
@@ -116,7 +118,7 @@ const ProductDetailPageContainer = ({productDto}: Props) => {
                                             disabled={isAddingToCart}
                                     >
                                         ADD TO CART
-                                    </button>
+                                    </Button>
                                 </div>
                                 : <></>
                         }

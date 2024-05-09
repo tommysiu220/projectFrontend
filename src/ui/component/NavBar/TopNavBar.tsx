@@ -2,14 +2,14 @@ import {useContext, useState} from 'react';
 import {AppBar, Toolbar, Button, Typography, Box} from '@mui/material';
 import {Link, useNavigate} from "react-router-dom";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import navbarBackground from './DOUBLESHOT.png'
-import navbarLogo from './blackballBackground.jpeg'
-import shoppingCartIcon from './shopping-trolley.svg'
-import logoutIcon from './logout.svg'
+import navbarBackground from './../../img/DOUBLESHOT.png'
+import navbarLogo from './../../img/blackballBackground.jpeg'
+import shoppingCartIcon from './../../img/shopping-trolley.svg'
+import logoutIcon from './../../img/logout.svg'
 import {UserData} from "../../../data/user/UserData.ts";
 import {LoginUserContext} from "../../../context/LoginUserContext.ts";
 import * as FirebaseAuthService from "../../../authService/FirebaseAuthService.ts"
-import ShoppingCartDrawer from "../ShoppingCartDrawer.tsx";
+import ShoppingCartDrawer from "../ShoppingCart/ShoppingCartDrawer.tsx";
 
 
 const TopNavBar = () => {
@@ -70,7 +70,7 @@ const TopNavBar = () => {
                     </div>
                     <div style={{width: "50vw", display: "flex", justifyContent: 'center', alignItems: 'center'}}
                          onClick={() => {
-                             navigate("/")
+                             navigate("/productlist")
                          }}>
                         {/*<Link to={"/"}>*/}
                         <img height="60px" src={navbarLogo}/>

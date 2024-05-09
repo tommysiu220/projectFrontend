@@ -5,4 +5,5 @@ export interface ProductDto {
     image_url: string;
     stock: number;
     description: string;
+
 }

@@ -2,7 +2,7 @@ import {useNavigate, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {ProductDto} from "../../../data/product/ProductDto.Type.ts";
 import * as ProductDtoApi from "../../../api/ProductApi.ts";
-import ProductDetailPageContainer from "../../component/ProductDetailPageContainer.tsx";
+import ProductDetailPageContainer from "../../component/ProductDetailPage/ProductDetailPageContainer.tsx";
 import TopNavBar from "../../component/NavBar/TopNavBar.tsx";
 import LoadingPage from "../LoadingPage/LoadingPage.tsx";
 
@@ -10,12 +10,12 @@ type Params = {
     pid: string,
 }
 
-export default function ProductDetailPage(){
+export default function ProductDetailPage() {
     const {pid} = useParams<Params>();
     const [getProductByPid, setGetProductByPid] = useState<ProductDto | undefined>(undefined);
     const navigate = useNavigate();
 
-    const fetchGetProductByPid = async (pid:string) => {
+    const fetchGetProductByPid = async (pid: string) => {
         try {
             setGetProductByPid(undefined);
             const responseGetAllProductDto = await ProductDtoApi.getProductByPid(pid);
@@ -27,21 +27,23 @@ export default function ProductDetailPage(){
     }
 
     useEffect(() => {
-        if (pid){
+        if (pid) {
             fetchGetProductByPid(pid);
-        } else{
+        } else {
             navigate("/error");
         }
 
     }, []);
 
-    return(
+    return (
         <>
-            <TopNavBar/>
             {
                 getProductByPid
-                ? <ProductDetailPageContainer productDto={getProductByPid}/>
-                : <LoadingPage/>
+                    ? <>
+                        <TopNavBar/>
+                        <ProductDetailPageContainer productDto={getProductByPid}/>
+                    </>
+                    : <LoadingPage/>
             }
         </>
     )

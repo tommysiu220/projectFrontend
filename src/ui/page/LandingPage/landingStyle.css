@@ -1,0 +1,105 @@
+.landing-background{
+    background-color: black;
+    height:65%;
+    background-image: url('/Users/tommysiu220/Desktop/Venturenix/Project/projectFrontend/project_frontend/src/ui/img/blackballBackground.jpeg');
+    background-size: cover; /* Adjust as needed */
+    background-position: center top;
+
+}
+
+@font-face {
+    font-family: 'CustomFont'; /* Name to use for the font */
+    src: url("blanka.otf") format('truetype'); /* Path to the font file */
+    /* Optionally, you can define other font weights and styles here */
+}
+
+:root {
+    --glow-color: rgba(255,255,255);
+}
+
+.glowing-btn {
+    color: var(--glow-color);
+    cursor: pointer;
+    padding-left: .2em;
+    padding-right: 0;
+    padding-bottom: .15em;
+    border: 0.15em solid var(--glow-color);
+    background: none;
+    perspective: 2em;
+    font-family: "CustomFont", sans-serif;;
+    font-size: 5em;
+    letter-spacing: .2em;
+
+    box-shadow: inset 0 0 0.5em 0 var(--glow-color),
+    0 0 0.5em 0 var(--glow-color);
+    animation: border-flicker 5s linear infinite;
+}
+
+.glowing-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0.2;
+    filter: blur(5em);
+    /*transform: translateY(120%) rotateX(95deg) scale(1, 0.35);*/
+    background: var(--glow-color);
+    pointer-events: none;
+}
+
+.glowing-btn::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    z-index: -1;
+    background-color: var(--glow-color);
+    box-shadow: 0 0 1em 0.5em var(--glow-color);
+    transition: opacity 200ms linear;
+}
+
+.glowing-btn:hover {
+    color: rgba(0, 0, 0);
+    text-shadow: none;
+    animation: none;
+}
+
+.glowing-btn:hover:before {
+    filter: blur(2em);
+}
+
+.glowing-btn:hover:after {
+    opacity: 1;
+}
+
+
+@keyframes border-flicker {
+    0% {
+        opacity: 0.1;
+    }
+    2% {
+        opacity: 1;
+    }
+    4% {
+        opacity: 0.1;
+    }
+    6% {
+        opacity: 1;
+    }
+    8% {
+        opacity: 0.1;
+    }
+    12% {
+        opacity: 1;
+    }
+}
+@media only screen and (max-width: 600px) {
+    .glowing-btn{
+        font-size: 2em;
+    }
+}

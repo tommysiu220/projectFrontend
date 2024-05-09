@@ -4,14 +4,15 @@ import ProductDetailPage from "../ui/page/ProductDetailPage";
 import ShoppingCartPage from "../ui/page/ShoppingCartPage";
 import CheckoutPage from "../ui/page/CheckoutPage";
 import LoginPage from "../ui/page/LoginPage";
-import ThankyouPage from "../ui/page/ThankYouPage";
+import ThankyouPage from "../ui/page/ThankyouPage";
 import ErrorPage from "../ui/page/ErrorPage";
+import LandingPage from "../ui/page/LandingPage";
 
 
 
 export const router = createBrowserRouter([
     {
-        path: "/",
+        path: "/productlist",
         element: <ProductListingPage/>,
         errorElement:<ErrorPage/>
     },
@@ -32,11 +33,15 @@ export const router = createBrowserRouter([
         element: <CheckoutPage/>
     },
     {
-        path: "/thankyou",
+        path: "/thankyou/:transactionId",
         element: <ThankyouPage/>
     },
     {
         path: "/error",
         element: <ErrorPage/>
+    },
+    {
+        path: "/",
+        element: <LandingPage/>,
     },
 ])

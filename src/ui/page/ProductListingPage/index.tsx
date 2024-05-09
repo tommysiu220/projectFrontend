@@ -24,7 +24,7 @@ export default function ProductListingPage() {
     }
 
     useEffect(() => {
-        setTimeout(fetchGetAllProductDto,1500);
+        setTimeout(fetchGetAllProductDto,0);
     }, []);
 
     // const renderProductList = () => {
@@ -42,13 +42,15 @@ export default function ProductListingPage() {
 
     return (
         <Box>
-
+            <video id="videoPlayer" controls autoPlay>
+                <source src="https://www.youtube.com/watch?v=fI-XfjQCDwM"/>
+            </video>
             {
                 getAllProductDto
                     ? (
                         <div>
                             <TopNavBar/>
-                            <Container sx={{marginTop:4}}>
+                            <Container sx={{marginTop: 4}}>
                                 <CardGrid getAllProductDtoList={getAllProductDto}/>
                             </Container></div>
                     )

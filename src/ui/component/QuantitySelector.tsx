@@ -1,16 +1,15 @@
 import {ChangeEvent} from "react";
-import "../component/componentStyle.css"
 
 type Props = {
     initQuantity: number;
-    increment: (() => void) | ((pid: number, cartQuantity: number) => Promise<void>);
-    decrement: (() => void) | ((pid: number, cartQuantity: number) => Promise<void>);
+    increment: () => void;
+    decrement: () => void;
     isPatching: boolean;
-    handleQuantityChange: (event: ChangeEvent<HTMLInputElement>) => void;
+    // handleQuantityChange: (event: ChangeEvent<HTMLInputElement>) => void;
     // handleInputBlur: (pid: number, cartQuantity: number) => Promise<void>;
 }
 
-export const QuantitySelector = ({initQuantity, increment, decrement, handleQuantityChange, isPatching}: Props) => {
+export const QuantitySelector = ({initQuantity, handleQuantityChange, isPatching,increment,decrement}: Props) => {
     // const [quantity, setQuantity] = useState(initQuantity);
 
     // const handleQuantityChange = (event: React.ChangeEvent<HTMLInputElement>) => {

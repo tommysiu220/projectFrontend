@@ -1,8 +1,9 @@
 import * as FirebaseAuthService from "../authService/FirebaseAuthService.ts"
 import axios from "axios";
 import {CartItemDto} from "../data/cartitem/CartItemDto.Type.ts";
+import getEnvConfig from "../config/EnvConfig.ts";
 
-const baseUrl = "http://localhost:8080"
+const baseUrl = getEnvConfig().baseUrl;
 
 const getAuthConfig = async () => {
     const accessToken = await FirebaseAuthService.getAccessToken();
@@ -21,9 +22,12 @@ const getAuthConfig = async () => {
 export async function getUserCart(): Promise<CartItemDto[]> {
 
     try {
+        const apiUrl= baseUrl+"/cart";
+        console.log(apiUrl)
         const response = await axios.get<CartItemDto[]>(
-            `${baseUrl}/cart`,
-            await getAuthConfig()
+            apiUrl,
+            // `${baseUrl}/cart`,
+            await getAuthConfig(),
         )
         return response.data;
     } catch (error) {
@@ -45,7 +49,7 @@ export async function putCartItem(pid: number, quantity: number) {
     }
 }
 
-export async function patchCartItem(pid: number,quantity:number):Promise<CartItemDto>{
+export async function patchCartItem(pid: number, quantity: number): Promise<CartItemDto> {
     try {
         const response = await axios.patch(
             `${baseUrl}/cart/${pid}/${quantity}`,
@@ -60,15 +64,13 @@ export async function patchCartItem(pid: number,quantity:number):Promise<CartIte
 }
 
 export async function deleteCartItem(pid: number) {
-    const accessToken = await FirebaseAuthService.getAccessToken();
-    if (!accessToken) {
-        throw new Error();
-    }
-
     try {
+        const apiUrl= baseUrl+`/cart/${pid}`;
+        console.log(apiUrl)
         await axios.delete(
-            `${baseUrl}/cart/${pid}`,
-            await getAuthConfig()
+            apiUrl,
+            // `${baseUrl}/cart/${pid}`,
+            await getAuthConfig(),
         )
     } catch (error) {
         console.error(error);
