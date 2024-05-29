@@ -2,17 +2,18 @@
     height: 100vh;
     margin: 0; /* Remove default margin */
     padding: 0;
-    background-image: url('src/ui/component/NavBar/blackballBackground.jpeg');
+    background-image: url('/Users/tommysiu220/Desktop/Venturenix/Project/projectFrontend/project_frontend/src/ui/page/ProductDetailPage/DoubleshotDetailPageBackground.png');
     background-size: cover; /* Cover the entire container */
     background-position: center; /* Center the background image */
     background-repeat: no-repeat; /* Prevent the background image from repeating */
-    opacity: 0.9;
+    opacity:.8;
 }
 
 .container{
-    background-color: rgb(255, 255, 255,0.5);
+    background-color: rgb(255, 255, 255,.8);
     border: 4px white solid;
     padding: 16px;
     color: rgb(255, 255, 255);
+    border-radius: 8px;
 }
 

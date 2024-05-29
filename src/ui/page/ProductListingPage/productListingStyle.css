@@ -1,0 +1,46 @@
+@font-face {
+    font-family: 'CustomFont';
+    src: url("blanka.otf") format('truetype');
+}
+
+.productListingDescription{
+    position: absolute;
+    bottom: 15%;
+    left: 2.5%;
+    color:white;
+    font-size: 52px;
+    font-weight: 700;
+    font-family: "CustomFont", sans-serif;
+    letter-spacing: .1em;
+    background-color: rgba(0,0,0,.6);
+    margin:12px;
+
+}
+
+.productListingDescription:hover{
+    cursor: default;
+}
+
+.shopNowButton{
+    position: absolute;
+    bottom: 8%;
+    right: 5%;
+    color:white;
+    font-size: 60px;
+    font-weight: 900;
+    letter-spacing: .1em;
+    background-color: rgba(0,0,0,.6);
+    margin: 12px;
+    border:solid 4px white;
+    padding: 4px;
+}
+
+.shopNowButton:hover{
+    cursor: pointer;
+}
+
+.unselectable {
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+}

@@ -14,11 +14,11 @@ function App() {
     }, []);
 
     return (
-        <>
+        <div>
             <LoginUserContext.Provider value={loginUser}>
                 <RouterProvider router={router}/>
             </LoginUserContext.Provider>
-        </>
+        </div>
     )
 }
 

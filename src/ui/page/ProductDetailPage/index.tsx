@@ -5,6 +5,7 @@ import * as ProductDtoApi from "../../../api/ProductApi.ts";
 import ProductDetailPageContainer from "../../component/ProductDetailPage/ProductDetailPageContainer.tsx";
 import TopNavBar from "../../component/NavBar/TopNavBar.tsx";
 import LoadingPage from "../LoadingPage/LoadingPage.tsx";
+import "./productDetailStyle.css"
 
 type Params = {
     pid: string,
@@ -39,10 +40,18 @@ export default function ProductDetailPage() {
         <>
             {
                 getProductByPid
-                    ? <>
-                        <TopNavBar/>
-                        <ProductDetailPageContainer productDto={getProductByPid}/>
-                    </>
+                    ?
+                    <div >
+                        <div className="background-container">
+                            <img src="https://i.imgur.com/wNWgqM8.png" alt="Background Image"
+                                 className="background-image"/>
+                        </div>
+                        <div className="content-container">
+                            <TopNavBar/>
+                            <ProductDetailPageContainer productDto={getProductByPid}/>
+                        </div>
+
+                    </div>
                     : <LoadingPage/>
             }
         </>

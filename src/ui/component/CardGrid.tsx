@@ -10,27 +10,33 @@ type Props = {
 const CardGrid = ({getAllProductDtoList}: Props) => {
     return (
         <Grid container sx={{
-            my:4,
+            my: 0,
+            border: "2px solid grey",
         }}>
             {getAllProductDtoList.map(item => (
-                <Grid key={item.pid} item xs={4} sx={{padding: 2}}>
-                    <Card sx={{ padding:0}} >
+                <Grid key={item.pid} item xs={4} sx={{padding: 0}}>
+                    <Card sx={{
+                        // color: "white",
+                        padding: 0,
+                        border: "2px solid grey",
+                        borderRadius: 0
+                    }}>
                         <Link to={`/product/${item.pid}`} className="nav-link">
-                        <CardMedia
-                            component="img"
-                            height="400"
-                            image={item.image_url}
-                        />
-                        <CardContent >
+                            <CardMedia
+                                component="img"
+                                height="400"
+                                image={item.image_url}
+                            />
+                            <CardContent>
 
-                                <Typography gutterBottom variant="h5" component="div" >
+                                <Typography gutterBottom variant="body1" component="div">
                                     {item.product_name}
                                 </Typography>
-                                <Typography variant="body2" color="text.secondary">
+                                <Typography variant="body2" >
                                     HKD {item.price}
                                 </Typography>
 
-                        </CardContent>
+                            </CardContent>
                         </Link>
                     </Card>
                 </Grid>

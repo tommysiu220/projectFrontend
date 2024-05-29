@@ -50,7 +50,7 @@ const ShoppingCartContainer = ({cartItemDtoList, setCartItemDtoList}: Props) => 
     }, [cartItemDtoList]);
 
     return (
-        <div>
+        <div >
             <TopNavBar/>
             {/*<Typography variant="h1">*/}
             {/*    Shopping Cart*/}

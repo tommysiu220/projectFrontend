@@ -2,14 +2,16 @@ import TopNavBar from "../../component/NavBar/TopNavBar.tsx";
 import {Box, Container} from "@mui/material";
 import CardGrid from "../../component/CardGrid.tsx";
 import {ProductDto} from "../../../data/product/ProductDto.Type.ts";
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import * as ProductDtoApi from "../../../api/ProductApi.ts"
 import LoadingPage from "../LoadingPage/LoadingPage.tsx";
 import {useNavigate} from "react-router-dom";
+import "./productListingStyle.css";
 
 export default function ProductListingPage() {
     const [getAllProductDto, setGetAllProductDto] = useState<ProductDto[] | undefined>(undefined);
     const navigate = useNavigate();
+    const allProductListRef = useRef<HTMLDivElement>(null);
 
     const fetchGetAllProductDto = async () => {
         try {
@@ -23,35 +25,52 @@ export default function ProductListingPage() {
         }
     }
 
-    useEffect(() => {
-        setTimeout(fetchGetAllProductDto,0);
-    }, []);
+    const handleShopNowClick = () => {
+        if (allProductListRef.current) {
+            allProductListRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
 
-    // const renderProductList = () => {
-    //     if (getAllProductDto) {
-    //         const productResultList = getAllProductDto.map((value) => {
-    //             return {
-    //                 name: value.dt).format("DD/MM/YYYY HH:mm:ss"),
-    //                 temperature: value.main.temp,
-    //                 humidity: value.main.humidity,
-    //             }
-    //         })
-    //         return <WeatherChart chartDataList={chartDataList}/>
-    //     }
-    // }
+
+    useEffect(() => {
+        setTimeout(fetchGetAllProductDto, 0);
+    }, []);
 
     return (
         <Box>
-            <video id="videoPlayer" controls autoPlay>
-                <source src="https://www.youtube.com/watch?v=fI-XfjQCDwM"/>
-            </video>
+            <TopNavBar/>
+            <Box sx={{
+                display: "flex",
+                backgroundColor: "black",
+                alignItems: "center",
+                justifyContent: "center",
+                height: "100vh",
+            }}>
+                <video autoPlay={true} style={{height:"100%", width:"100vw", }} muted={true} loop={true}>
+                    <source src="https://fsse2401-project-tommy.s3.ap-southeast-1.amazonaws.com/productpage.mp4"/>
+                </video>
+                <div
+                  className="productListingDescription unselectable"
+                >
+                    You miss the shot
+                    <div style={{height: "1rem"}}></div>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;you don't take
+                </div>
+                <div
+                  className="shopNowButton unselectable"
+                  onClick={handleShopNowClick}
+                >
+                    SHOP NOW
+                </div>
+            </Box>
+
             {
                 getAllProductDto
-                    ? (
-                        <div>
-                            <TopNavBar/>
-                            <Container sx={{marginTop: 4}}>
-                                <CardGrid getAllProductDtoList={getAllProductDto}/>
+                  ? (
+                    <div className="allProductList" ref={allProductListRef}>
+                        <Container sx={{marginTop: 4}}>
+                            <CardGrid getAllProductDtoList={getAllProductDto}/>
                             </Container></div>
                     )
                     : <LoadingPage/>

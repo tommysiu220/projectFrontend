@@ -1,6 +1,6 @@
 import {ProductDto} from "../../../data/product/ProductDto.Type.ts";
 import {Box, Button, Container, Typography} from "@mui/material";
-import {ChangeEvent, useState} from "react";
+import {useState} from "react";
 import * as CartItemApi from "../../../api/CartItemApi.ts"
 import {useNavigate} from "react-router-dom";
 import {QuantitySelector} from "../QuantitySelector.tsx";
@@ -26,31 +26,13 @@ const ProductDetailPageContainer = ({productDto}: Props) => {
         }
     };
 
-    const handleQuantityChange = (event: ChangeEvent<HTMLInputElement>) => {
-        const value = parseInt(event.target.value);
-        if (!isNaN(value)) {
-            setQuantity(value);
-        }
-    };
+    // const handleQuantityChange = (event: ChangeEvent<HTMLInputElement>) => {
+    //     const value = parseInt(event.target.value);
+    //     if (!isNaN(value)) {
+    //         setQuantity(value);
+    //     }
+    // };
 
-    // const minusButtonStyle = {
-    //     height: "36px",
-    //     width: "36px",
-    //     borderRadius: 0,
-    //     border: "black 2px solid",
-    //     backgroundColor: "white",
-    //     borderRight: 0,
-    //     outline: "none"
-    // }
-    // const plusButtonStyle = {
-    //     height: "36px",
-    //     width: "36px",
-    //     borderRadius: 0,
-    //     border: "black 2px solid",
-    //     backgroundColor: "white",
-    //     borderLeft: 0,
-    //     outline: "none"
-    // }
     const handleAddToCart = async (pid: number, quantity: number) => {
         try {
             setIsAddingToCart(true);
@@ -66,59 +48,91 @@ const ProductDetailPageContainer = ({productDto}: Props) => {
     return (
 
         <>
-            <Container>
+            <Container sx={{height: "90vh", display: "flex", justifyContent: "center", alignItems: "center",}}>
                 <Box
                     sx={{
                         display: 'flex',
-                        flexDirection: 'row', // or 'column' for vertical layout
-                        justifyContent: 'space-between', // or 'center', 'flex-start', 'flex-end', 'space-around', 'space-evenly'
-                        height: 'auto', // for example, to make the container fill the viewport height
+                        flexDirection: 'row',
+                        justifyContent: 'space-between',
+                        height: 'auto',
+                        backgroundColor: "white",
+                        borderRadius: "20px",
                     }}
                     className={"container"}
                 >
                     <div style={{marginTop: "16px"}}>
-                        {/*<img height="650px" src={`/${productDto.image_url}`}/>*/}
                         <img height="650px" src={productDto.image_url}/>
                     </div>
 
-                    <div style={{marginTop: "16px",color:"black"}}>
+                    <div style={{marginTop: "16px", color: "black", position: "relative"}}>
                         <h2>{productDto.product_name}</h2>
                         {/*<Typography dangerouslySetInnerHTML={{__html: formattedDescription}} sx={{whiteSpace:"pre-line"}}/>*/}
                         <Typography sx={{whiteSpace: "pre-line"}}>
                             {productDto.description}
                         </Typography>
-                        <h5>Price: ${productDto.price.toLocaleString()}</h5>
-
-                        <Typography variant="body1" color={productDto.stock > 0 ? 'black' : 'red'}>
-                            {productDto.stock > 0 ? 'In Stock' : 'Out of Stock'}
-                        </Typography>
-
+                        {/*<br/>*/}
+                        {/*<br/>*/}
+                        {/*<Typography variant="body1">*/}
+                        {/*    Price: ${productDto.price.toLocaleString()}*/}
+                        {/*</Typography>*/}
+                        {/*<Typography variant="body1" color={productDto.stock > 0 ? 'black' : 'red'}>*/}
+                        {/*    {productDto.stock > 0 ? 'In Stock' : 'Out of Stock'}*/}
+                        {/*</Typography>*/}
+                        <div style={{
+                            position: "absolute",
+                            bottom: "15%",
+                            width: "100%",
+                        }}>
+                            <div style={{
+                                    display: "flex",
+                                    justifyContent: "space-between",
+                                    position: "relative",
+                            }}>
+                            <Typography variant="body1">
+                                Price: ${productDto.price.toLocaleString()}
+                            </Typography>
+                            <Typography variant="body1" color={productDto.stock > 0 ? 'black' : 'red'}>
+                                {productDto.stock > 0 ? 'In Stock' : 'Out of Stock'}
+                            </Typography>
+                            </div>
+                        </div>
                         {
                             productDto.stock > 0
-                                ? <div style={{display: "flex", justifyContent: "space-between"}}>
-                                    <QuantitySelector initQuantity={quantity}
-                                                      increment={increment}
-                                                      decrement={decrement}
-                                                      isPatching={false}
-                                                      handleQuantityChange={handleQuantityChange}
-                                    />
-                                    <Button style={{
-                                        height: "36px",
-                                        width: "112px",
-                                        borderRadius: 0,
-                                        border: "2px black solid",
-                                        backgroundColor: "white",
-                                        textAlign: "center",
-                                        outline: "none",
-                                        color: "black",
-                                    }}
-                                            onClick={() => {
-                                                handleAddToCart(productDto.pid, quantity)
-                                            }}
-                                            disabled={isAddingToCart}
-                                    >
-                                        ADD TO CART
-                                    </Button>
+                                ?
+                                <div style={{
+                                    position: "absolute",
+                                    bottom: "5%",
+                                    width: "100%",
+                                }}>
+                                    <div style={{
+                                        display: "flex",
+                                        justifyContent: "space-between",
+                                        position: "relative",
+                                    }}>
+                                        <QuantitySelector initQuantity={quantity}
+                                                          increment={increment}
+                                                          decrement={decrement}
+                                                          isPatching={false}
+                                            // handleQuantityChange={handleQuantityChange}
+                                        />
+                                        <Button style={{
+                                            height: "36px",
+                                            width: "112px",
+                                            borderRadius: 0,
+                                            border: "2px black solid",
+                                            backgroundColor: "white",
+                                            textAlign: "center",
+                                            outline: "none",
+                                            color: "black",
+                                        }}
+                                                onClick={() => {
+                                                    handleAddToCart(productDto.pid, quantity)
+                                                }}
+                                                disabled={isAddingToCart}
+                                        >
+                                            ADD TO CART
+                                        </Button>
+                                    </div>
                                 </div>
                                 : <></>
                         }

@@ -25,6 +25,8 @@ export default function ShoppingCartPage() {
     useEffect(() => {
         if (loginUser) {
             fetchGetCartItemDto().then();
+        } else {
+            navigate('/login')
         }
     }, [loginUser]);
     return (
