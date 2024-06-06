@@ -30,8 +30,8 @@
     font-size: 5em;
     letter-spacing: .2em;
 
-    box-shadow: inset 0 0 0.5em 0 var(--glow-color),
-    0 0 0.5em 0 var(--glow-color);
+    box-shadow: inset 0 0 0.3em 0 var(--glow-color),
+    0 0 0.3em 0 var(--glow-color);
     animation: border-flicker 5s linear infinite;
 }
 
@@ -47,6 +47,7 @@
     /*transform: translateY(120%) rotateX(95deg) scale(1, 0.35);*/
     background: var(--glow-color);
     pointer-events: none;
+    transition: 0.5s;
 }
 
 .glowing-btn::after {
@@ -59,18 +60,18 @@
     opacity: 0;
     z-index: -1;
     background-color: var(--glow-color);
-    box-shadow: 0 0 1em 0.5em var(--glow-color);
-    transition: opacity 200ms linear;
+    box-shadow: 0 0 120px 24px  var(--glow-color);
+    transition: opacity 0.5s linear;
 }
 
 .glowing-btn:hover {
     color: rgba(0, 0, 0);
-    text-shadow: none;
+    text-shadow: 0 0 12px #000;
     animation: none;
 }
 
 .glowing-btn:hover:before {
-    filter: blur(2em);
+    filter: blur(40px);
 }
 
 .glowing-btn:hover:after {
@@ -88,15 +89,10 @@
     4% {
         opacity: 0.1;
     }
-    6% {
-        opacity: 1;
-    }
-    8% {
-        opacity: 0.1;
-    }
     12% {
         opacity: 1;
     }
+
 }
 @media only screen and (max-width: 600px) {
     .glowing-btn{

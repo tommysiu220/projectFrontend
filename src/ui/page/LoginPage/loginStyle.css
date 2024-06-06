@@ -1,19 +1,18 @@
 .loginPageContainer{
     height: 100vh;
-    margin: 0; /* Remove default margin */
+    margin: 0;
     padding: 0;
-    background-image: url('/Users/tommysiu220/Desktop/Venturenix/Project/projectFrontend/project_frontend/src/ui/page/ProductDetailPage/DoubleshotDetailPageBackground.png');
-    background-size: cover; /* Cover the entire container */
-    background-position: center; /* Center the background image */
-    background-repeat: no-repeat; /* Prevent the background image from repeating */
+    background-image: url('../ProductDetailPage/DoubleshotDetailPageBackground.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     opacity:.8;
 }
 
 .container{
-    background-color: rgb(255, 255, 255,.8);
-    border: 4px white solid;
-    padding: 16px;
+    background-color: rgb(255, 255, 255,.9);
+    border: 4px #000 solid;
+    padding-top: 16px;
     color: rgb(255, 255, 255);
-    border-radius: 8px;
 }
 

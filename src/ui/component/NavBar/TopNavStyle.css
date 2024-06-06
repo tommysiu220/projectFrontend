@@ -1,0 +1,132 @@
+/* Dropdown Menu Styles */
+.has-dropdown {
+    position: relative;
+}
+.nav-bar-user-container{
+    width: 25vw;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+.dropdown-menu {
+    position: absolute;
+    background-color: #333;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: none;
+    width: 135px;
+    z-index: 1;
+}
+
+.dropdown-menu-item {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.nav-bar-user{
+    display: flex;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    margin: 8px 0;
+}
+
+.nav-bar-item-description {
+    padding-left: 8px;
+    font-size: 16px;
+}
+
+.nav-bar-item-img {
+    width: 28px;
+}
+
+.has-dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu li {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 10px;
+    transition: background-color 0.3s;
+}
+
+.dropdown-menu li:hover {
+    background-color: #444;
+}
+
+
+.unselectable {
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+}
+
+.nav-bar-user-icon{
+    display: none;
+}
+
+@media (max-width: 850px) {
+    .dropdown-menu{
+        width: 100px;
+    }
+
+    .nav-bar-logo {
+        height: 24px;
+    }
+
+    .nav-bar-user{
+        font-size: 12px;
+        font-weight: normal;
+        margin: 4px 0;
+    }
+
+    .nav-bar-item-img {
+        width: 16px;
+    }
+
+    .nav-bar-item-description {
+        padding-left: 8px;
+        font-size: 12px;
+    }
+
+    .nav-bar-user-icon{
+        display: none;
+    }
+}
+
+@media (max-width: 450px) {
+    .nav-bar-user-container{
+        justify-content: center;
+    }
+
+    .dropdown-menu {
+        width:60px;
+    }
+
+    .nav-bar-logo {
+        height: 16px;
+    }
+
+    .nav-bar-user{
+        display:none;
+    }
+
+    .nav-bar-item-img {
+        display:none;
+    }
+
+    .nav-bar-user-icon{
+        display: flex;
+        width: 16px;
+        margin: 4px 0;
+    }
+
+    .nav-bar-item-description {
+        font-size: 12px;
+        padding: 0;
+    }
+}

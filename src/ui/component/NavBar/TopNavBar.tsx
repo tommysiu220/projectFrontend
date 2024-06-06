@@ -1,59 +1,104 @@
-import {useContext, useState} from 'react';
-import {AppBar, Toolbar, Button, Typography, Box} from '@mui/material';
-import {Link, useNavigate} from "react-router-dom";
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-// import navbarBackground from './../../img/DOUBLESHOT.png'
-import navbarLogo from './../../img/floatingLogo_backgroundless2.png'
-import shoppingCartIcon from './../../img/shopping-trolley.svg'
-import logoutIcon from './../../img/logout.svg'
+import {useContext, useEffect, useState} from 'react';
+import {AppBar, Toolbar, Typography, Box} from '@mui/material';
+import {useNavigate} from "react-router-dom";
+import navbarLogo from './../../img/Doubleshot-horizontal-backgroundless.png'
+import shoppingCartIcon from './bag.png'
+import logoutIcon from './logout.png'
+import loginIcon from './people.png'
+import homeIcon from './home.png'
 import {UserData} from "../../../data/user/UserData.ts";
 import {LoginUserContext} from "../../../context/LoginUserContext.ts";
 import * as FirebaseAuthService from "../../../authService/FirebaseAuthService.ts"
 import ShoppingCartDrawer from "../ShoppingCart/ShoppingCartDrawer.tsx";
+import "./TopNavStyle.css"
 
 
 const TopNavBar = () => {
 
   const loginUser = useContext<UserData | null | undefined>(LoginUserContext);
+  const [isVisible, setIsVisible] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
+  const [lastScrollTime, setLastScrollTime] = useState(Date.now());
+  const [isHovered, setIsHovered] = useState(false);
+  const navigate = useNavigate();
+
 
   const logoutUser = () => {
     FirebaseAuthService.handleSignOut();
   }
 
-  const navigate = useNavigate();
-
-  const [drawerOpen, setDrawerOpen] = useState<boolean>(false)
-
   const renderLoginUser = () => {
     if (loginUser) {
       return (
         <Box sx={{display: "flex"}}>
-          <Typography sx={{display: 'flex', alignItems: 'center', color: "black"}}>
-            {loginUser.email}
-          </Typography>
+          <div className="has-dropdown">
+            <div className="nav-bar-user unselectable"
+            >
+              ID: {loginUser.email}
+            </div>
 
-          <div onClick={() => {
-            // setDrawerOpen(true)
-            navigate("/shoppingcart")
-          }}
-               style={{display: 'flex', alignItems: 'center', margin: 8, height: "32px"}}>
-            <img src={shoppingCartIcon} width="24px"/>
+            <img className="nav-bar-user-icon unselectable" src={loginIcon}/>
+            <ul className="dropdown-menu">
+              <li onClick={() => {
+                navigate("/")
+              }}
+                  className='dropdown-menu-item unselectable'
+              >
+                <img src={homeIcon} className='nav-bar-item-img'/>
+                <div className='nav-bar-item-description'>
+                  Home
+                </div>
+
+              </li>
+              <li onClick={() => {
+                navigate("/shoppingcart")
+              }}
+                  className='dropdown-menu-item unselectable'
+              >
+                <img src={shoppingCartIcon} className='nav-bar-item-img'/>
+                <div className={'nav-bar-item-description'}>
+                  Cart
+                </div>
+              </li>
+              <li onClick={logoutUser}
+                  className='dropdown-menu-item unselectable'>
+                <img src={logoutIcon} className='nav-bar-item-img'/>
+                <div className={'nav-bar-item-description'}>
+                  Logout
+                </div>
+              </li>
+            </ul>
           </div>
 
-          <div style={{display: 'flex', alignItems: 'center',}}
-               onClick={logoutUser}
-          >
-            <img src={logoutIcon} width="32px"/>
-          </div>
+
+          {/*<div onClick={() => {*/}
+          {/*  // setDrawerOpen(true)*/}
+          {/*  navigate("/shoppingcart")*/}
+          {/*}}*/}
+          {/*     style={{display: 'flex', alignItems: 'center', margin: 8, height: "32px"}}>*/}
+          {/*  <img src={shoppingCartIcon} width="24px"/>*/}
+          {/*</div>*/}
+
+          {/*<div style={{display: 'flex', alignItems: 'center',}}*/}
+          {/*     onClick={logoutUser}*/}
+          {/*>*/}
+
+          {/*</div>*/}
 
         </Box>
       )
     } else if (loginUser === null) {
       return (
-        <Button color="primary" sx={{height: 24, padding: 0}}>
-          <Link style={{height: 24, color: "white"}} to="/login"
-                className="nav-link"><AccountCircleIcon/></Link>
-        </Button>
+        <div onClick={() => {
+          navigate("/login")
+        }}
+             className='dropdown-menu-item unselectable'
+        >
+          <img src={loginIcon} className='nav-bar-item-img'/>
+          <div className='nav-bar-item-description'>
+            Login
+          </div>
+        </div>
       )
     } else {
       return (
@@ -62,27 +107,49 @@ const TopNavBar = () => {
     }
   }
 
-  const [isVisible, setIsVisible] = useState(false);
+  const handleScroll = () => {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    setIsVisible(scrollTop > 0);
+    setLastScrollTime(Date.now());
+  };
 
   const handleMouseEnter = () => {
-    setIsVisible(true);
+    setIsHovered(true);
   };
 
   const handleMouseLeave = () => {
-    setIsVisible(false);
+    setIsHovered(false);
   };
+
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+
+    const hideNavbarTimer = setInterval(() => {
+      const currentTime = Date.now();
+      const timeSinceLastScroll = currentTime - lastScrollTime;
+      if (timeSinceLastScroll >= 3000 && !isHovered) {
+        setIsVisible(false);
+      }
+    }, 0);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      clearInterval(hideNavbarTimer);
+    };
+  }, [lastScrollTime, isHovered]);
 
   return (
     <>
       <AppBar position="static" sx={{
-        backgroundColor: "rgba(20,20,20,0.9)",
+        backgroundColor: "rgba(0,0,0,0.8)",
         zIndex: "100",
         transition: "opacity 0.3s ease-in-out",
-        opacity: isVisible ? "1" : "0",
+        opacity: isVisible || isHovered ? "1" : "0",
         position: "fixed",
         top: "0",
-        height: "10%",
-
+        height: "88px",
+        // minHeight: "80px"
       }}
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
@@ -92,18 +159,13 @@ const TopNavBar = () => {
             display: "flex",
             height: "100%",
             padding: 0,
-            marginLeft: "60px",
-            marginRight: "24px"
+            marginLeft: "20px",
+            marginRight: "20px",
           }}
+          className='top-nav-bar'
         >
           <div style={{width: "25vw", display: "flex", alignItems: 'center',}}>
-            <img
-              height="80px"
-              src={navbarLogo}
-              onClick={() => {
-                navigate("/productlist")
-              }}
-            />
+
           </div>
           <div style={{
             width: "50vw",
@@ -112,19 +174,19 @@ const TopNavBar = () => {
             alignItems: 'center'
           }}
           >
-            {/*<Link to={"/"}>*/}
-
-            {/*<img height="60px" src={navbarBackground}/>*/}
-            {/*</Link>*/}
+            <img
+              height="40px"
+              src={navbarLogo}
+              className="nav-bar-logo"
+              onClick={() => {
+                navigate("/productlist")
+              }}
+            />
           </div>
 
-          <div style={{
-            width: "25vw",
-            display: "flex",
-            justifyContent: 'right',
-            alignItems: "center",
-            height: 64
-          }}>
+          <div
+            className='nav-bar-user-container'
+          >
             {renderLoginUser()}
           </div>
 

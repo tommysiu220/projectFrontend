@@ -2,7 +2,7 @@ import {CartItemDto} from "../../../data/cartitem/CartItemDto.Type.ts";
 import {Divider, Grid, Typography} from "@mui/material";
 import {QuantitySelector} from "../QuantitySelector.tsx";
 import * as CartItemApi from "../../../api/CartItemApi.ts";
-import {ChangeEvent, Dispatch, SetStateAction, useState} from "react";
+import { Dispatch, SetStateAction, useState} from "react";
 import PatchCartItemSnackbar from "./PatchCartItemSnackbar.tsx";
 import DeleteCartItemSnackbar from "./DeleteCartItemSnackbar.tsx";
 import {useNavigate} from "react-router-dom";
@@ -56,12 +56,12 @@ export default function ShoppingCartTableRow({dto,cartItemDtoList,setCartItemDto
         }
     };
 
-    const handleQuantityChange = (event: ChangeEvent<HTMLInputElement>) => {
-        const inputQuantity = parseInt(event.target.value);
-        if (inputQuantity > 1) {
-            setQuantity(inputQuantity);
-        }
-    };
+    // const handleQuantityChange = (event: ChangeEvent<HTMLInputElement>) => {
+    //     const inputQuantity = parseInt(event.target.value);
+    //     if (inputQuantity > 1) {
+    //         setQuantity(inputQuantity);
+    //     }
+    // };
 
     const handleDeleteCartItem = async (pid: number) => {
         try {
@@ -105,7 +105,7 @@ export default function ShoppingCartTableRow({dto,cartItemDtoList,setCartItemDto
                                   increment={() => incrementOne(dto.pid,quantity)}
                                   decrement={() => decrementOne(dto.pid,quantity)}
                                   isPatching={isPatching}
-                                  handleQuantityChange={handleQuantityChange}
+                                  // handleQuantityChange={handleQuantityChange}
                     // handleInputBlur={()=>handleInputBlur(dto.pid,quantity)}
                 />
             </Grid>

@@ -9,73 +9,80 @@ import {useNavigate} from "react-router-dom";
 import "./productListingStyle.css";
 
 export default function ProductListingPage() {
-    const [getAllProductDto, setGetAllProductDto] = useState<ProductDto[] | undefined>(undefined);
-    const navigate = useNavigate();
-    const allProductListRef = useRef<HTMLDivElement>(null);
+  const [getAllProductDto, setGetAllProductDto] = useState<ProductDto[] | undefined>(undefined);
+  const navigate = useNavigate();
+  const allProductListRef = useRef<HTMLDivElement>(null);
 
-    const fetchGetAllProductDto = async () => {
-        try {
-            setGetAllProductDto(undefined);
-            const responseGetAllProductDto = await ProductDtoApi.getAllProduct();
-            setGetAllProductDto(responseGetAllProductDto);
+  const fetchGetAllProductDto = async () => {
+    try {
+      setGetAllProductDto(undefined);
+      const responseGetAllProductDto = await ProductDtoApi.getAllProduct();
+      setGetAllProductDto(responseGetAllProductDto);
 
-        } catch (error) {
-            // navigate to error page
-            navigate("/error");
-        }
+    } catch (error) {
+      // navigate to error page
+      navigate("/error");
     }
+  }
 
-    const handleShopNowClick = () => {
-        if (allProductListRef.current) {
-            allProductListRef.current.scrollIntoView({ behavior: 'smooth' });
-        }
+  const handleShopNowClick = () => {
+    if (allProductListRef.current) {
+      allProductListRef.current.scrollIntoView({behavior: 'smooth'});
     }
+  }
 
 
-    useEffect(() => {
-        setTimeout(fetchGetAllProductDto, 0);
-    }, []);
+  useEffect(() => {
+    setTimeout(fetchGetAllProductDto, 0);
+  }, []);
 
-    return (
-        <Box>
-            <TopNavBar/>
-            <Box sx={{
-                display: "flex",
-                backgroundColor: "black",
-                alignItems: "center",
-                justifyContent: "center",
-                height: "100vh",
-            }}>
-                <video autoPlay={true} style={{height:"100%", width:"100vw", }} muted={true} loop={true}>
-                    <source src="https://fsse2401-project-tommy.s3.ap-southeast-1.amazonaws.com/productpage.mp4"/>
-                </video>
-                <div
-                  className="productListingDescription unselectable"
-                >
-                    You miss the shot
-                    <div style={{height: "1rem"}}></div>
+  return (
+    <Box>
+      <TopNavBar/>
+      {/*<NavBar2/>*/}
+      <Box
+        className="video-background-container"
+      >
+        <video
+          className="video-background"
+          autoPlay={true}
+          muted={true}
+          loop={true}
+          playsInline={true}
+        >
+          <source src="https://fsse2401-project-tommy.s3.ap-southeast-1.amazonaws.com/productpage.mp4"/>
+        </video>
+        <div
+          className="product-listing-description unselectable"
+        >
+          You miss the shot
+          <div style={{height: "1rem"}}></div>
 
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;you don't take
-                </div>
-                <div
-                  className="shopNowButton unselectable"
-                  onClick={handleShopNowClick}
-                >
-                    SHOP NOW
-                </div>
-            </Box>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          you don't take
+        </div>
+        <div
+          className="shop-now-button unselectable"
+          onClick={handleShopNowClick}
+        >
+          SHOT NOW !
+        </div>
+      </Box>
 
-            {
-                getAllProductDto
-                  ? (
-                    <div className="allProductList" ref={allProductListRef}>
-                        <Container sx={{marginTop: 4}}>
-                            <CardGrid getAllProductDtoList={getAllProductDto}/>
-                            </Container></div>
-                    )
-                    : <LoadingPage/>
-            }
-
-        </Box>
-    )
+      {
+        getAllProductDto
+          ? (
+            <div className="all-product-list" ref={allProductListRef}>
+              <div className="product-list-heading">
+                ALL Product
+              </div>
+              <Container >
+                <CardGrid getAllProductDtoList={getAllProductDto}/>
+              </Container>
+            </div>
+          )
+          : <LoadingPage/>
+      }
+    </Box>
+  )
 }
