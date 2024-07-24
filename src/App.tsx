@@ -6,7 +6,7 @@ import {UserData} from "./data/user/UserData.ts";
 import * as FirebaseAuthService from '../src/authService/FirebaseAuthService.ts'
 import {LoginUserContext} from "./context/LoginUserContext.ts";
 
-function App() {
+export default function  App() {
     const [loginUser, setLoginUser] = useState<UserData | null | undefined>(undefined);
 
     useEffect(() => {
@@ -22,4 +22,3 @@ function App() {
     )
 }
 
-export default App

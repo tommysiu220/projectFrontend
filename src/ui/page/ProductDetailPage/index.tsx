@@ -4,8 +4,8 @@ import {ProductDto} from "../../../data/product/ProductDto.Type.ts";
 import * as ProductDtoApi from "../../../api/ProductApi.ts";
 import ProductDetailPageContainer from "../../component/ProductDetailPage/ProductDetailPageContainer.tsx";
 import TopNavBar from "../../component/NavBar/TopNavBar.tsx";
-import LoadingPage from "../LoadingPage/LoadingPage.tsx";
 import "./productDetailStyle.css"
+import LoadingPage from "../LoadingPage";
 
 type Params = {
     pid: string,
@@ -43,7 +43,7 @@ export default function ProductDetailPage() {
                     ?
                     <div >
                         <div className="background-container">
-                            <img src="https://i.imgur.com/wNWgqM8.png" alt="Background Image"
+                            <img src="https://imgur.com/mKtt5pW.png" alt="Background Image"
                                  className="background-image"/>
                         </div>
                         <div className="content-container">

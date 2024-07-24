@@ -2,10 +2,10 @@ import * as CartItemApi from "../../../api/CartItemApi.ts"
 import {useContext, useEffect, useState} from "react";
 import {CartItemDto} from "../../../data/cartitem/CartItemDto.Type.ts";
 import ShoppingCartContainer from "../../component/ShoppingCart/ShoppingCartContainer.tsx";
-import LoadingPage from "../LoadingPage/LoadingPage.tsx";
 import {useNavigate} from "react-router-dom";
 import {UserData} from "../../../data/user/UserData.ts";
 import {LoginUserContext} from "../../../context/LoginUserContext.ts";
+import LoadingPage from "../LoadingPage";
 
 export default function ShoppingCartPage() {
     const [getCartItemDto, setGetCartItemDto] = useState<CartItemDto[] | undefined>(undefined);
@@ -25,7 +25,7 @@ export default function ShoppingCartPage() {
     useEffect(() => {
         if (loginUser) {
             fetchGetCartItemDto().then();
-        } else {
+        } else if (loginUser===null){
             navigate('/login')
         }
     }, [loginUser]);

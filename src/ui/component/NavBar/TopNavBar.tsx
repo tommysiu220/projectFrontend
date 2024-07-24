@@ -141,18 +141,20 @@ const TopNavBar = () => {
 
   return (
     <>
-      <AppBar position="static" sx={{
-        backgroundColor: "rgba(0,0,0,0.8)",
-        zIndex: "100",
-        transition: "opacity 0.3s ease-in-out",
-        opacity: isVisible || isHovered ? "1" : "0",
-        position: "fixed",
-        top: "0",
-        height: "88px",
-        // minHeight: "80px"
-      }}
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
+      <AppBar
+        className="main-nav-bar-container"
+        position="static"
+        sx={{
+          backgroundColor: "rgba(0,0,0,0.8)",
+          zIndex: "100",
+          transition: "opacity 0.3s ease-in-out",
+          opacity: isVisible || isHovered ? "1" : "0",
+          position: "fixed",
+          top: "0",
+          // minHeight: "80px"
+        }}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
       >
         <Toolbar
           style={{

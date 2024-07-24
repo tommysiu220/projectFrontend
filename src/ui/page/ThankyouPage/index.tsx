@@ -4,7 +4,7 @@ import {UserData} from "../../../data/user/UserData.ts";
 import {LoginUserContext} from "../../../context/LoginUserContext.ts";
 import * as TransactionApi from "../../../api/TransactionApi.ts";
 import {TransactionDto} from "../../../data/transaction/TransactionDto.Type.ts";
-import LoadingPage from "../LoadingPage/LoadingPage.tsx";
+import LoadingPage from "../LoadingPage";
 
 type Params = {
     transactionId: string

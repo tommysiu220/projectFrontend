@@ -25,3 +25,15 @@
 .full-width-input :focus {
     border-bottom: 2px solid black; /* Customize the focus style */
 }
+
+.checkout-page-container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 0;
+    height: 100vh;
+    background-image: url('https://imgur.com/mKtt5pW.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}

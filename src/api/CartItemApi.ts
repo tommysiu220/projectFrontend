@@ -23,7 +23,6 @@ export async function getUserCart(): Promise<CartItemDto[]> {
 
     try {
         const apiUrl= baseUrl+"/cart";
-        console.log(apiUrl)
         const response = await axios.get<CartItemDto[]>(
             apiUrl,
             // `${baseUrl}/cart`,
@@ -66,7 +65,6 @@ export async function patchCartItem(pid: number, quantity: number): Promise<Cart
 export async function deleteCartItem(pid: number) {
     try {
         const apiUrl= baseUrl+`/cart/${pid}`;
-        console.log(apiUrl)
         await axios.delete(
             apiUrl,
             // `${baseUrl}/cart/${pid}`,

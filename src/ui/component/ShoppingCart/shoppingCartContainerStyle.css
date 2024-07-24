@@ -1,17 +1,12 @@
-.login-page-container{
-    height: 100vh;
+.shopping-cart-page-container{
+    height:100vh;
+
     margin: 0;
     padding: 0;
     background-image: url('https://imgur.com/mKtt5pW.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-}
 
-.form-container{
-    background-color: rgb(255, 255, 255);
-    border: 4px #000 solid;
-    padding-top: 16px;
-    color: rgb(255, 255, 255);
 }
 

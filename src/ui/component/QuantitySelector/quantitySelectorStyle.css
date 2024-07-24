@@ -1,0 +1,72 @@
+.plus-button{
+    height: 36px;
+    width: 36px;
+    border-radius: 0;
+    border: black 2px solid;
+    background-color: white;
+    border-left: 0;
+    outline: none;
+}
+
+.minus-button{
+    height: 36px;
+    width: 36px;
+    border-radius: 0;
+    border: black 2px solid;
+    background-color: white;
+    border-right: 0;
+    outline: none;
+}
+
+.quantity{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 36px;
+    width: 36px;
+    border: 2px black solid;
+    background-color: white;
+    box-sizing: border-box;
+    border-left: 0;
+    border-right: 0;
+}
+
+.disabled-plus-button{
+    height: 36px;
+    width: 36px;
+    border-radius: 0;
+    border: black 2px solid;
+    color:gray;
+    background-color: white;
+    border-left: 0;
+    outline: none;
+}
+
+.disabled-minus-button{
+    height: 36px;
+    width: 36px;
+    border-radius: 0;
+    border: black 2px solid;
+    color:gray;
+    background-color: white;
+    border-right: 0;
+    outline: none;
+}
+
+@media (max-width: 850px) {
+    .plus-button{
+        height: 28px;
+        width: 28px;
+    }
+
+    .minus-button{
+        height: 28px;
+        width: 28px;
+    }
+
+    .quantity{
+        height: 28px;
+        width: 28px;
+        font-size: 14px;
+    }
+}

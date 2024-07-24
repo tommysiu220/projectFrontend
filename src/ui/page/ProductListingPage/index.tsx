@@ -4,9 +4,9 @@ import CardGrid from "../../component/CardGrid.tsx";
 import {ProductDto} from "../../../data/product/ProductDto.Type.ts";
 import {useEffect, useRef, useState} from "react";
 import * as ProductDtoApi from "../../../api/ProductApi.ts"
-import LoadingPage from "../LoadingPage/LoadingPage.tsx";
 import {useNavigate} from "react-router-dom";
 import "./productListingStyle.css";
+import LoadingPage from "../LoadingPage";
 
 export default function ProductListingPage() {
   const [getAllProductDto, setGetAllProductDto] = useState<ProductDto[] | undefined>(undefined);
@@ -76,7 +76,7 @@ export default function ProductListingPage() {
               <div className="product-list-heading">
                 ALL Product
               </div>
-              <Container >
+              <Container style={{padding:0}}>
                 <CardGrid getAllProductDtoList={getAllProductDto}/>
               </Container>
             </div>

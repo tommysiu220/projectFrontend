@@ -1,12 +1,14 @@
 @font-face {
     font-family: 'CustomFont';
-    src: url("blanka.otf") format('truetype');
+    src: url("../ShoppingCartPage/blanka.otf") format('truetype');
 }
 
 :root {
     --glow-color: rgba(255,255,255);
 }
-
+.all-product-list{
+    margin: 20px;
+}
 .product-listing-description{
     position: absolute;
     bottom: 15%;
@@ -49,27 +51,12 @@
     z-index: -1;
 }
 
-
-/*.shopNowButton:hover::before {*/
-/*    box-shadow: 0 0 80px 8px #ffffff;*/
-/*}*/
-
 .shop-now-button:hover {
     cursor: pointer;
     background-color: rgba(0,0,0,0.9);
     box-shadow: 0 0 40px 4px #ffffff;
     text-shadow: 0 0 8px #ffffff;
 }
-/*.shopNowButton:hover{*/
-/*    cursor: pointer;*/
-/*    background-color: var(--glow-color);*/
-/*    box-shadow: 0 0 1em 0.5em var(--glow-color);*/
-/*    transition: opacity 1s linear;*/
-/*    color: rgba(0, 0, 0);*/
-/*    text-shadow: none;*/
-/*}*/
-
-
 
 .video-background-container{
     display: flex;
@@ -109,6 +96,7 @@
     }
     .shop-now-button{
         font-size: 36px;
+        bottom: 7%;
         padding: 0 4px 8px 8px;
     }
 }
@@ -116,9 +104,19 @@
 @media (max-width: 520px) {
     .product-listing-description{
         font-size: 24px;
+        right: auto;
+        left: auto;
+        margin: 16px;
     }
     .shop-now-button{
         font-size: 24px;
         padding: 0 4px 4px 4px;
+        right: auto;
+        left: auto;
+    }
+    .product-list-heading{
+        font-size: 48px;
+        margin-bottom: 24px;
+        margin-top: 0;
     }
 }

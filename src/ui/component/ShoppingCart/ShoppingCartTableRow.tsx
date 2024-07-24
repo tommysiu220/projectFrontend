@@ -1,6 +1,6 @@
 import {CartItemDto} from "../../../data/cartitem/CartItemDto.Type.ts";
 import {Divider, Grid, Typography} from "@mui/material";
-import {QuantitySelector} from "../QuantitySelector.tsx";
+import {QuantitySelector} from "../QuantitySelector/QuantitySelector.tsx";
 import * as CartItemApi from "../../../api/CartItemApi.ts";
 import { Dispatch, SetStateAction, useState} from "react";
 import PatchCartItemSnackbar from "./PatchCartItemSnackbar.tsx";
@@ -22,7 +22,6 @@ export default function ShoppingCartTableRow({dto,cartItemDtoList,setCartItemDto
 
     const incrementOne = async (pid: number, cartQuantity: number) => {
         if (dto.stock >= (cartQuantity+1)) {
-            console.log(dto.name, dto.stock, cartQuantity)
             setIsPatching(true);
             const responseDto = await CartItemApi.patchCartItem(pid, cartQuantity + 1)
             const updateDtoList = cartItemDtoList.map((item) => {
@@ -40,7 +39,6 @@ export default function ShoppingCartTableRow({dto,cartItemDtoList,setCartItemDto
 
     const decrementOne = async (pid: number, cartQuantity: number) => {
         if (cartQuantity > 1) {
-            console.log(pid, cartQuantity)
             setIsPatching(true);
             const responseDto = await CartItemApi.patchCartItem(pid, cartQuantity - 1)
             const updateDtoList = cartItemDtoList.map((item) => {
@@ -56,12 +54,6 @@ export default function ShoppingCartTableRow({dto,cartItemDtoList,setCartItemDto
         }
     };
 
-    // const handleQuantityChange = (event: ChangeEvent<HTMLInputElement>) => {
-    //     const inputQuantity = parseInt(event.target.value);
-    //     if (inputQuantity > 1) {
-    //         setQuantity(inputQuantity);
-    //     }
-    // };
 
     const handleDeleteCartItem = async (pid: number) => {
         try {
@@ -74,7 +66,6 @@ export default function ShoppingCartTableRow({dto,cartItemDtoList,setCartItemDto
             setSuccessfulDelete(true)
             setIsPatching(false);
         } catch (error) {
-            // navigate to error page
             navigate("/error");
         }
     }
@@ -124,6 +115,7 @@ export default function ShoppingCartTableRow({dto,cartItemDtoList,setCartItemDto
                     onClick={() => {
                         handleDeleteCartItem(dto.pid).then()
                     }}
+                    disabled={isPatching}
                 >
                     REMOVE
                 </button>

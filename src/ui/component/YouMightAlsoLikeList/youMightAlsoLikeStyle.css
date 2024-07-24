@@ -1,0 +1,38 @@
+.also-like-list-container {
+    display: flex;
+    margin: 0 24px;
+    width: inherit;
+    box-sizing: border-box;
+}
+
+.also-like-item-container {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+}
+
+.also-like-item-container:hover{
+    cursor: pointer;
+}
+
+.also-like-item-img-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.also-like-item-img{
+    width:200px;
+}
+
+.also-like-item-name {
+    color: grey;
+    font-weight: lighter;
+    margin: 16px;
+}
+
+@media (max-width: 850px) {
+    .also-like-item-img{
+        width:120px;
+    }
+}

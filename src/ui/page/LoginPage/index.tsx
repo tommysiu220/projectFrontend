@@ -9,6 +9,9 @@ import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import KeyIcon from '@mui/icons-material/Key';
 import IconButton from "@mui/material/IconButton";
 import {Visibility, VisibilityOff} from "@mui/icons-material";
+import signInWithGoogle from "./icons8-google.svg";
+import signInWithFacebook from "./icons8-facebook.svg";
+import signInWithGithub from "./icons8-github.svg";
 
 export default function LoginPage() {
   const [email, setEmail] = useState<string>("");
@@ -46,32 +49,60 @@ export default function LoginPage() {
     }
   }
 
+  const googleLogin = async () => {
+    const loginResult = await FirebaseAuthService.handleSignInWithGoogle();
+    if (loginResult) {
+      navigate(-1);
+    } else {
+      setIsLoginFail(true);
+    }
+  }
+
+  const facebookLogin = async () => {
+    const loginResult = await FirebaseAuthService.handleSignInWithFacebook();
+    if (loginResult) {
+      navigate(-1);
+    } else {
+      setIsLoginFail(true);
+    }
+  }
+
+  const githubLogin = async () => {
+    const loginResult = await FirebaseAuthService.handleSignInWithGithub();
+    if (loginResult) {
+      navigate(-1);
+    } else {
+      setIsLoginFail(true);
+    }
+  }
+
+
   useEffect(() => {
     if (loginUser) {
-      navigate("/")
+      navigate(-1)
     }
   }, [loginUser]);
 
 
   return (
 
-    <div className={"loginPageContainer"}>
+    <div className="login-page-container">
       <div
         style={{
           height: "20vh"
         }}>
       </div>
-      <Container maxWidth="xs" className="container">
-        <Typography variant="h4" align="center" gutterBottom sx={{color: "black"}}>
+      <Container maxWidth="xs" className="form-container">
+        <Typography variant="h4" align="center" sx={{color: "black"}}>
           LOGIN
         </Typography>
-        <form onSubmit={handleLogin}>
+        <form style={{margin: 0}} onSubmit={handleLogin}>
           <Grid>
             {
               isLoginFail &&
                 <Alert severity='error' sx={{}}>Wrong Email or Password</Alert>
             }
-            <Grid item xs={12} sx={{margin: '24px'}}>
+            <Grid item xs={12} sx={{margin: '8px 24px 24px 24px'}}>
 
               <Input
                 fullWidth
@@ -86,7 +117,7 @@ export default function LoginPage() {
                 }
               />
             </Grid>
-            <Grid item xs={12} sx={{margin: '24px'}}>
+            <Grid item xs={12} sx={{margin: '8px 24px 24px 24px'}}>
               <Input
                 fullWidth
                 type={showPassword ? 'text' : 'password'}
@@ -112,18 +143,29 @@ export default function LoginPage() {
                 }
               />
             </Grid>
-            <Grid item xs={12} sx={{margin: '32px 24px 24px 24px'}}>
+            <Grid item xs={12} sx={{margin: '32px 24px 16px 24px'}}>
               <Button
                 type="submit"
                 fullWidth
                 variant="contained"
-                style={{backgroundColor: 'rgb(0,0,0)', color: 'white',borderRadius:0}}
+                style={{backgroundColor: 'rgb(0,0,0)', color: 'white', borderRadius: 0}}
               >
                 Login
               </Button>
             </Grid>
           </Grid>
         </form>
+
+        <hr style={{border: 'none', height: '2px', backgroundColor: 'rgba(0,0,0)',}}/>
+
+        <div style={{display: "flex", color: "black", justifyContent: "center", fontSize: "16px", marginTop: "8px"}}>
+          Login with other ways
+        </div>
+        <div style={{width: "100%", display: "flex", alignItems: "center", justifyContent: "center"}}>
+          <img style={{width: "40px", margin: "4px"}} src={signInWithGoogle} onClick={googleLogin}/>
+          <img style={{width: "40px", margin: "4px"}} src={signInWithFacebook} onClick={facebookLogin}/>
+          <img style={{width: "40px", margin: "4px"}} src={signInWithGithub} onClick={githubLogin}/>
+        </div>
       </Container>
     </div>
   )

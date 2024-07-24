@@ -3,11 +3,14 @@ import {firebaseConfig} from "./FirebaseConfig";
 import {
     getAuth,
     GoogleAuthProvider,
+    FacebookAuthProvider,
+    GithubAuthProvider,
     onAuthStateChanged,
     signInWithEmailAndPassword,
     signInWithPopup, signOut
 } from "firebase/auth";
 import {UserData} from "../data/user/UserData.ts";
+
 
 
 export const serviceInit = () => {
@@ -34,6 +37,32 @@ export const handleSignInWithEmailAndPassword = async (email: string, password: 
 export const handleSignInWithGoogle = async (): Promise<boolean> => {
     try {
         const provider = new GoogleAuthProvider();
+        const auth = getAuth();
+        await signInWithPopup(auth, provider);
+        // Signed in
+        return true;
+    } catch (error) {
+        console.log(error);
+        return false;
+    }
+}
+
+export const handleSignInWithFacebook = async (): Promise<boolean> => {
+    try {
+        const provider = new FacebookAuthProvider();
+        const auth = getAuth();
+        await signInWithPopup(auth, provider);
+        // Signed in
+        return true;
+    } catch (error) {
+        console.log(error);
+        return false;
+    }
+}
+
+export const handleSignInWithGithub = async (): Promise<boolean> => {
+    try {
+        const provider = new GithubAuthProvider();
         const auth = getAuth();
         await signInWithPopup(auth, provider);
         // Signed in
