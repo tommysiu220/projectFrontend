@@ -1,0 +1,88 @@
+/*.full-width-input {*/
+/*    margin-bottom: 12px;*/
+/*    display: block;*/
+/*    border: none;*/
+/*    padding: 5px;*/
+/*    border-bottom: 1px gray solid;*/
+/*    color: gray;*/
+/*    width: 80%;*/
+/*    box-shadow: none;*/
+/*    outline: none;*/
+/*}*/
+
+/*.half-width-input {*/
+/*    margin-bottom: 12px;*/
+/*    display: block;*/
+/*    border: none;*/
+/*    padding: 5px;*/
+/*    border-bottom: 1px gray solid;*/
+/*    color: gray;*/
+/*    width: 35%;*/
+/*    box-shadow: none;*/
+/*    outline: none;*/
+/*}*/
+
+/*.full-width-input :focus {*/
+/*    border-bottom: 2px solid black; !* Customize the focus style *!*/
+/*}*/
+
+.checkout-page-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 0;
+    height: 100vh;
+    background-image: url('https://imgur.com/mKtt5pW.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.confirm-order-container {
+    margin: 0 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.confirm-order-total {
+    display: flex;
+    align-items: center;
+}
+
+.confirm-order-button {
+    border-radius: 0;
+    border: 2px black solid;
+    background-color: white;
+    font-size: 16px;
+    padding: 4px 8px;
+}
+
+.responsive-title {
+    display: none;
+}
+
+@media (max-width: 900px) {
+    .hide-title {
+        display: none;
+    }
+
+    .responsive-title {
+        display: revert;
+    }
+
+}
+
+@media (max-width: 500px){
+    .confirm-order-total {
+        margin:8px auto;
+    }
+    .confirm-order-container {
+        flex-direction: column;
+        justify-content: center;
+    }
+    .confirm-order-button {
+        margin-left: auto;
+        margin-right: auto;
+        width: 200px;
+    }
+}

@@ -1,7 +1,7 @@
-import {Box, Button, Divider, Grid, Stack, Typography} from "@mui/material";
+import {Box, Divider, Grid, Typography} from "@mui/material";
 import CheckoutItemRow from "./CheckoutItemRow.tsx";
 import {TransactionDto} from "../../../data/transaction/TransactionDto.Type.ts";
-import "./CheckoutContainerStyle.css"
+import "./checkoutContainerStyle.css"
 import * as StripeApi from "../../../api/StripeApi.ts"
 
 
@@ -69,9 +69,9 @@ export default function CheckoutContainer({transactionDto}: CheckoutContainerPro
         border: "2px solid black",
         borderRadius: 0,
         padding: "16px",
-        height: "70vh",
+        minHeight: "70vh",
         boxSizing: "border-box",
-        backgroundColor:"white",
+        backgroundColor: "white",
         margin: "0 24px",
       }}>
         <Typography variant="h5" sx={{
@@ -88,124 +88,121 @@ export default function CheckoutContainer({transactionDto}: CheckoutContainerPro
         {/*  height: "94%",*/}
         {/*  boxSizing: "border-box"*/}
         {/*}}>*/}
-          {/*<Grid item xs={4} style={{*/}
-          {/*    borderRight: "2px solid black",*/}
-          {/*    boxSizing: "border-box"*/}
-          {/*}}>*/}
-          {/*    <Typography variant="h6">Payment Detail</Typography>*/}
-          {/*    <form onSubmit={handleSubmit}>*/}
-          {/*        <>*/}
-          {/*            <Box>*/}
-          {/*                <Typography variant="subtitle1" color="text.secondary">Card Number</Typography>*/}
-          {/*                <input*/}
-          {/*                    className={"full-width-input"}*/}
-          {/*                    type="text"*/}
-          {/*                    id="cardNumber"*/}
-          {/*                    name="cardNumber"*/}
-          {/*                    value={creditCardNumber}*/}
-          {/*                    onChange={handleChangeCardNumber}*/}
-          {/*                    maxLength={19}*/}
-          {/*                    style={{fontSize:"16px"}}*/}
-          {/*                />*/}
-          {/*            </Box>*/}
-          {/*            <Box>*/}
-          {/*                <Typography variant="subtitle1" color="text.secondary">Card Holder Name</Typography>*/}
-          {/*                <input*/}
-          {/*                    className={"full-width-input"}*/}
-          {/*                    type="text"*/}
-          {/*                    id="cardHolderName"*/}
-          {/*                    name="cardHolderName"*/}
-          {/*                    value={cardHolderName}*/}
-          {/*                    onChange={handleChangeCardHolderName}*/}
-          {/*                />*/}
-          {/*            </Box>*/}
-          {/*            <Box>*/}
-          {/*                <Typography variant="subtitle1" color="text.secondary">Expiration (MM/YYYY)</Typography>*/}
-          {/*                <input*/}
-          {/*                    className={"half-width-input"}*/}
-          {/*                    type="text"*/}
-          {/*                    id="validThrough"*/}
-          {/*                    name="validThrough"*/}
-          {/*                    value={expiration}*/}
-          {/*                    onChange={handleChangeExpiration}*/}
-          {/*                />*/}
-          {/*            </Box>*/}
-          {/*            <Box>*/}
-          {/*                <Typography variant="subtitle1" color="text.secondary">CVV</Typography>*/}
-          {/*                <input*/}
-          {/*                    className={"half-width-input"}*/}
-          {/*                    type="text"*/}
-          {/*                    id="cvv"*/}
-          {/*                    name="cvv"*/}
-          {/*                    value={cvv}*/}
-          {/*                    onChange={handleChangeCvv}*/}
-          {/*                    maxLength={3}*/}
-          {/*                />*/}
-          {/*            </Box>*/}
-          {/*        </>*/}
-          {/*    </form>*/}
-          {/*</Grid>*/}
-          <Grid item xs={12}>
-            <Typography sx={{marginBottom: "8px"}} variant="h6">Item Summary</Typography>
-            <div>
-              <Grid container>
-                <Grid item md={6} xs={6} sx={{display: "flex", justifyContent: "center"}}>
-                  <Typography variant="subtitle1">Product</Typography>
-                </Grid>
-                <Grid item md={2} xs={0} sx={{display: "flex", justifyContent: "center"}}>
-                  <div className="hide-title">Price</div>
-                </Grid>
-                <Grid item md={2} xs={0} sx={{display: "flex", justifyContent: "center"}}>
-                  <div className="hide-title">Quantity</div>
-                </Grid>
-                <Grid item md={2} xs={0} sx={{display: "flex", justifyContent: "center"}}>
-                  <div className="hide-title">Sub Total</div>
-                </Grid>
-                <Grid item md={0} xs={6} sx={{display: "flex", justifyContent: "center"}}>
-                  <div className="responsive-title">Details</div>
-                </Grid>
+        {/*<Grid item xs={4} style={{*/}
+        {/*    borderRight: "2px solid black",*/}
+        {/*    boxSizing: "border-box"*/}
+        {/*}}>*/}
+        {/*    <Typography variant="h6">Payment Detail</Typography>*/}
+        {/*    <form onSubmit={handleSubmit}>*/}
+        {/*        <>*/}
+        {/*            <Box>*/}
+        {/*                <Typography variant="subtitle1" color="text.secondary">Card Number</Typography>*/}
+        {/*                <input*/}
+        {/*                    className={"full-width-input"}*/}
+        {/*                    type="text"*/}
+        {/*                    id="cardNumber"*/}
+        {/*                    name="cardNumber"*/}
+        {/*                    value={creditCardNumber}*/}
+        {/*                    onChange={handleChangeCardNumber}*/}
+        {/*                    maxLength={19}*/}
+        {/*                    style={{fontSize:"16px"}}*/}
+        {/*                />*/}
+        {/*            </Box>*/}
+        {/*            <Box>*/}
+        {/*                <Typography variant="subtitle1" color="text.secondary">Card Holder Name</Typography>*/}
+        {/*                <input*/}
+        {/*                    className={"full-width-input"}*/}
+        {/*                    type="text"*/}
+        {/*                    id="cardHolderName"*/}
+        {/*                    name="cardHolderName"*/}
+        {/*                    value={cardHolderName}*/}
+        {/*                    onChange={handleChangeCardHolderName}*/}
+        {/*                />*/}
+        {/*            </Box>*/}
+        {/*            <Box>*/}
+        {/*                <Typography variant="subtitle1" color="text.secondary">Expiration (MM/YYYY)</Typography>*/}
+        {/*                <input*/}
+        {/*                    className={"half-width-input"}*/}
+        {/*                    type="text"*/}
+        {/*                    id="validThrough"*/}
+        {/*                    name="validThrough"*/}
+        {/*                    value={expiration}*/}
+        {/*                    onChange={handleChangeExpiration}*/}
+        {/*                />*/}
+        {/*            </Box>*/}
+        {/*            <Box>*/}
+        {/*                <Typography variant="subtitle1" color="text.secondary">CVV</Typography>*/}
+        {/*                <input*/}
+        {/*                    className={"half-width-input"}*/}
+        {/*                    type="text"*/}
+        {/*                    id="cvv"*/}
+        {/*                    name="cvv"*/}
+        {/*                    value={cvv}*/}
+        {/*                    onChange={handleChangeCvv}*/}
+        {/*                    maxLength={3}*/}
+        {/*                />*/}
+        {/*            </Box>*/}
+        {/*        </>*/}
+        {/*    </form>*/}
+        {/*</Grid>*/}
+        <Grid item xs={12}>
+          <Typography sx={{marginBottom: "8px"}} variant="h6">Item Summary</Typography>
+          <div>
+            <Grid container>
+              <Grid item md={7} xs={7} sx={{display: "flex", justifyContent: "center"}}>
+                <Typography variant="subtitle1">Product</Typography>
               </Grid>
+              <Grid item md={2} xs={0} sx={{display: "flex", justifyContent: "center"}}>
+                <div className="hide-title">Price</div>
+              </Grid>
+              <Grid item md={1} xs={0} sx={{display: "flex", justifyContent: "center"}}>
+                <div className="hide-title">Quantity</div>
+              </Grid>
+              <Grid item md={2} xs={0} sx={{display: "flex", justifyContent: "center"}}>
+                <div className="hide-title">Sub Total</div>
+              </Grid>
+              <Grid item md={0} xs={5} sx={{display: "flex", justifyContent: "center"}}>
+                <div className="responsive-title">Details</div>
+              </Grid>
+            </Grid>
 
-              <div style={{height: '52vh', overflowY: 'auto'}}>
-                {
-                  transactionDto.items.map((item) => {
-                    return (
-                      <CheckoutItemRow transactionProductDto={item}/>)
-                  })
-                }
-              </div>
+            <Divider sx={{border: 1}}/>
+
+            <div style={{height: '52vh', overflowY: 'auto'}}>
+              {
+                transactionDto.items.map((item) => {
+                  return (
+                    <CheckoutItemRow transactionProductDto={item}/>)
+                })
+              }
             </div>
-            <Stack direction="row" justifyContent="space-between" sx={{marginTop: "8px"}}>
-              <Box>
-                <Typography>
-                  {
-                    transactionDto.total > 2500
-                      ? `Total: HKD ${transactionDto.total.toLocaleString()}`
-                      :
-                      <div>
-                        Total: HKD ${(transactionDto.total+100).toLocaleString()}
-                        <br/>
-                        <div style={{fontWeight:"lighter",fontSize:"12px"}}>
-                          Shipping fee HKD 100 is included.
-                        </div>
-                      </div>
-                  }
+          </div>
 
-                </Typography>
-              </Box>
-              <Box>
-                <Button sx={{
-                  borderRadius: 0,
-                  border: "2px solid black",
-                  color: "black"
-                }}
-                        onClick={finishPayment}
-                >
-                  Confirm Your Order
-                </Button>
-              </Box>
-            </Stack>
-          </Grid>
+          <div className="confirm-order-container">
+            <div className="confirm-order-total">
+              {
+                transactionDto.total > 2500
+                  ? `Total: HKD ${transactionDto.total.toLocaleString()}`
+                  :
+                  <div style={{textAlign:"center"}}>
+                    Total: HKD ${(transactionDto.total + 100).toLocaleString()}
+                    <br/>
+                    <div style={{fontWeight: "lighter", fontSize: "12px"}}>
+                      Shipping fee HKD 100 is included.
+                    </div>
+                  </div>
+              }
+            </div>
+
+            <button
+              className="confirm-order-button"
+              onClick={finishPayment}
+            >
+              Confirm Your Order
+            </button>
+
+          </div>
+        </Grid>
         {/*</Grid>*/}
       </Box>
     </div>

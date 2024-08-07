@@ -1,0 +1,33 @@
+.responsive-detail{
+    display: none;
+}
+
+.checkout-product-img{
+    height:120px;
+}
+
+@media(max-width: 900px){
+    .responsive-detail{
+        display: revert;
+        font-size: 14px;
+    }
+    .hide-detail{
+        display:none;
+    }
+    .checkout-product{
+        font-size: 14px;
+    }
+    .checkout-product-img{
+        height:100px;
+    }
+}
+@media(max-width: 500px){
+    .responsive-detail{
+        font-weight:500;
+        font-size: 12px;
+    }
+    .checkout-product{
+        font-weight:500;
+        font-size: 12px;
+    }
+}
