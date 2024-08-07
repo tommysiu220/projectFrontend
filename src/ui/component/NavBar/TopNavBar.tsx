@@ -70,21 +70,6 @@ const TopNavBar = () => {
             </ul>
           </div>
 
-
-          {/*<div onClick={() => {*/}
-          {/*  // setDrawerOpen(true)*/}
-          {/*  navigate("/shoppingcart")*/}
-          {/*}}*/}
-          {/*     style={{display: 'flex', alignItems: 'center', margin: 8, height: "32px"}}>*/}
-          {/*  <img src={shoppingCartIcon} width="24px"/>*/}
-          {/*</div>*/}
-
-          {/*<div style={{display: 'flex', alignItems: 'center',}}*/}
-          {/*     onClick={logoutUser}*/}
-          {/*>*/}
-
-          {/*</div>*/}
-
         </Box>
       )
     } else if (loginUser === null) {

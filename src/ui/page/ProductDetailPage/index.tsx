@@ -22,7 +22,6 @@ export default function ProductDetailPage() {
             const responseGetAllProductDto = await ProductDtoApi.getProductByPid(pid);
             setGetProductByPid(responseGetAllProductDto);
         } catch (error) {
-            // navigate to error page
             navigate("/error");
         }
     }

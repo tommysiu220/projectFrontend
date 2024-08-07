@@ -12,7 +12,6 @@ export default function CheckoutItemRow({transactionProductDto}: Props) {
       <Grid sx={{my: 1, display: "flex", alignItems: "center", justifyContent: "center"}} container>
         <Grid item xs={2}
               sx={{display: "flex", alignItems: "center", justifyContent: "center"}}>
-          {/*<img height="160px" src={`/${dto.image_url}`}/>*/}
           <img className="checkout-product-img" src={transactionProductDto.product.image_url}/>
         </Grid>
         <Grid item xs={5}

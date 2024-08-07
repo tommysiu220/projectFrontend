@@ -20,7 +20,6 @@ export default function ProductListingPage() {
       setGetAllProductDto(responseGetAllProductDto);
 
     } catch (error) {
-      // navigate to error page
       navigate("/error");
     }
   }
@@ -39,7 +38,6 @@ export default function ProductListingPage() {
   return (
     <Box>
       <TopNavBar/>
-      {/*<NavBar2/>*/}
       <Box
         className="video-background-container"
       >

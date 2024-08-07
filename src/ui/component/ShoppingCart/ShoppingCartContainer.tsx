@@ -175,7 +175,6 @@ const ShoppingCartContainer = ({cartItemDtoList, setCartItemDtoList}: Props) => 
                 CHECK OUT
               </button>
             </Box>
-            {/*</Container>*/}
           </div>
         </div>
       </div>

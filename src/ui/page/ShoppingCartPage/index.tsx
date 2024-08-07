@@ -17,7 +17,6 @@ export default function ShoppingCartPage() {
       const responseGetCartItemDto = await CartItemApi.getUserCart();
       setGetCartItemDto(responseGetCartItemDto);
     } catch (error) {
-      // navigate to error page
       navigate('/error')
     }
   }

@@ -60,8 +60,8 @@
     background-image: url('https://imgur.com/mKtt5pW.png');
     background-size: cover;
     background-position: center;
-    opacity: 0.5; /* Adjust this value to change the transparency */
-    z-index: -1; /* Place the background image behind the content */
+    opacity: 0.5;
+    z-index: -1;
 }
 
 .error-button:hover {

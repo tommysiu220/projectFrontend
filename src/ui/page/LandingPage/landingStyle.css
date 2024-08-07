@@ -2,7 +2,7 @@
     background-color: black;
     height:65%;
     background-image: url('/Users/tommysiu220/Desktop/Venturenix/Project/projectFrontend/project_frontend/src/ui/img/blackballBackground.jpeg');
-    background-size: cover; /* Adjust as needed */
+    background-size: cover;
     background-position: center top;
 
 }
@@ -10,7 +10,6 @@
 @font-face {
     font-family: 'CustomFont'; /* Name to use for the font */
     src: url("blanka.otf") format('truetype'); /* Path to the font file */
-    /* Optionally, you can define other font weights and styles here */
 }
 
 :root {
@@ -44,7 +43,6 @@
     right: 0;
     opacity: 0.2;
     filter: blur(5em);
-    /*transform: translateY(120%) rotateX(95deg) scale(1, 0.35);*/
     background: var(--glow-color);
     pointer-events: none;
     transition: 0.5s;
