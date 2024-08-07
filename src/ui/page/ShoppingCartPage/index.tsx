@@ -8,34 +8,34 @@ import {LoginUserContext} from "../../../context/LoginUserContext.ts";
 import LoadingPage from "../LoadingPage";
 
 export default function ShoppingCartPage() {
-    const [getCartItemDto, setGetCartItemDto] = useState<CartItemDto[] | undefined>(undefined);
-    const loginUser = useContext<UserData | undefined | null>(LoginUserContext);
-    const navigate = useNavigate();
+  const [getCartItemDto, setGetCartItemDto] = useState<CartItemDto[] | undefined>(undefined);
+  const loginUser = useContext<UserData | undefined | null>(LoginUserContext);
+  const navigate = useNavigate();
 
-    const fetchGetCartItemDto = async () => {
-        try {
-            const responseGetCartItemDto = await CartItemApi.getUserCart();
-            setGetCartItemDto(responseGetCartItemDto);
-        } catch (error) {
-            // navigate to error page
-            navigate('/error')
-        }
+  const fetchGetCartItemDto = async () => {
+    try {
+      const responseGetCartItemDto = await CartItemApi.getUserCart();
+      setGetCartItemDto(responseGetCartItemDto);
+    } catch (error) {
+      // navigate to error page
+      navigate('/error')
     }
+  }
 
-    useEffect(() => {
-        if (loginUser) {
-            fetchGetCartItemDto().then();
-        } else if (loginUser===null){
-            navigate('/login')
-        }
-    }, [loginUser]);
-    return (
-        <>
-            {
-                getCartItemDto
-                    ? <ShoppingCartContainer cartItemDtoList={getCartItemDto} setCartItemDtoList={setGetCartItemDto}/>
-                    : <LoadingPage/>
-            }
-        </>
-    )
+  useEffect(() => {
+    if (loginUser) {
+      fetchGetCartItemDto().then();
+    } else if (loginUser === null) {
+      navigate('/login')
+    }
+  }, [loginUser]);
+  return (
+    <>
+      {
+        getCartItemDto
+          ? <ShoppingCartContainer cartItemDtoList={getCartItemDto} setCartItemDtoList={setGetCartItemDto}/>
+          : <LoadingPage/>
+      }
+    </>
+  )
 }

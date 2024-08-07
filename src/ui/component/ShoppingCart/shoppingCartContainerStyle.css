@@ -1,12 +1,106 @@
-.shopping-cart-page-container{
-    height:100vh;
-
+.shopping-cart-page-container {
     margin: 0;
     padding: 0;
+    height: 100vh;
     background-image: url('https://imgur.com/mKtt5pW.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 
+}
+
+.shopping-cart-container {
+    display: flex;
+    height: 80vh;
+}
+
+.summary-container {
+    width: 25vw;
+    min-height: 600px;
+}
+
+.shopping-cart-checkout-button {
+    width: 80%;
+    background-color: black;
+    color: white;
+    font-size: 20px;
+    padding: 8px;
+    border-radius: 0;
+    font-weight: 500;
+    position: absolute;
+    bottom: 5%;
+    left: 10%;
+}
+
+.summary-container {
+    width: 25vw;
+    background-color: rgb(245, 245, 245);
+    padding: 5rem 20px 0 20px;
+    position: relative;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.cart-item {
+    width: 75vw;
+    overflow: auto;
+    scrollbar-width: none;
+    padding: 0 20px 0 20px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto
+}
+
+
+.cart-title {
+    margin-bottom: 8px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+@media (max-width: 850px) {
+    .shopping-cart-page-container {
+        height: auto;
+        background-size: auto;
+        background-repeat: repeat;
+        min-height: 100vh;
+    }
+
+    .shopping-cart-container {
+        height: auto;
+        flex-direction: column;
+    }
+
+    .shopping-cart-checkout-button {
+        font-size: 16px;
+        width: 50%;
+        left: 25%;
+    }
+
+    .summary-container {
+        box-sizing: border-box;
+        width: 88vw;
+        padding: 20px;
+        min-height: 440px;
+        margin-bottom: 36px;
+        margin-left: auto;
+        margin-right: auto
+    }
+
+    .cart-item {
+        width: 88vw;
+        overflow: unset;
+        margin-bottom: 20px;
+    }
+
+}
+
+@media (max-width: 550px) {
+
+    .cart-title {
+        margin-bottom: 4px;
+        font-size: 12px;
+        font-weight: 400;
+    }
 }
 

@@ -149,17 +149,20 @@ export default function CheckoutContainer({transactionDto}: CheckoutContainerPro
             <Typography sx={{marginBottom: "8px"}} variant="h6">Item Summary</Typography>
             <div>
               <Grid container>
-                <Grid item xs={6} sx={{display: "flex", justifyContent: "center"}}>
+                <Grid item md={6} xs={6} sx={{display: "flex", justifyContent: "center"}}>
                   <Typography variant="subtitle1">Product</Typography>
                 </Grid>
-                <Grid item xs={2} sx={{display: "flex", justifyContent: "center"}}>
-                  <Typography variant="subtitle1">Price</Typography>
+                <Grid item md={2} xs={0} sx={{display: "flex", justifyContent: "center"}}>
+                  <div className="hide-title">Price</div>
                 </Grid>
-                <Grid item xs={2} sx={{display: "flex", justifyContent: "center"}}>
-                  <Typography variant="subtitle1">Quantity</Typography>
+                <Grid item md={2} xs={0} sx={{display: "flex", justifyContent: "center"}}>
+                  <div className="hide-title">Quantity</div>
                 </Grid>
-                <Grid item xs={2} sx={{display: "flex", justifyContent: "center"}}>
-                  <Typography variant="subtitle1">Sub Total</Typography>
+                <Grid item md={2} xs={0} sx={{display: "flex", justifyContent: "center"}}>
+                  <div className="hide-title">Sub Total</div>
+                </Grid>
+                <Grid item md={0} xs={6} sx={{display: "flex", justifyContent: "center"}}>
+                  <div className="responsive-title">Details</div>
                 </Grid>
               </Grid>
 

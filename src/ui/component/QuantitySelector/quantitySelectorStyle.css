@@ -54,19 +54,37 @@
 }
 
 @media (max-width: 850px) {
-    .plus-button{
+    .plus-button, .minus-button, .disabled-minus-button, .disabled-plus-button{
         height: 28px;
         width: 28px;
     }
 
-    .minus-button{
-        height: 28px;
-        width: 28px;
-    }
+    /*.minus-button{*/
+    /*    height: 28px;*/
+    /*    width: 28px;*/
+    /*}*/
 
     .quantity{
         height: 28px;
         width: 28px;
         font-size: 14px;
+    }
+}
+
+@media (max-width: 550px) {
+    .plus-button, .minus-button, .disabled-minus-button, .disabled-plus-button{
+        height: 24px;
+        width: 24px;
+    }
+
+    /*.minus-button{*/
+    /*    height: 24px;*/
+    /*    width: 24px;*/
+    /*}*/
+
+    .quantity{
+        height: 24px;
+        width: 24px;
+        font-size: 12px;
     }
 }

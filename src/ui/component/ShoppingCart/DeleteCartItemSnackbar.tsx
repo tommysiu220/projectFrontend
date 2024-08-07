@@ -14,7 +14,7 @@ export default function DeleteCartItemSnackbar({snackbarOpen, setSnackbarOpen}: 
             autoHideDuration={3000}
             onClose={() => setSnackbarOpen(false)}
         >
-            <Typography sx={{border:"2px black solid", padding: 1}}>
+            <Typography sx={{border:"2px black solid", padding: 1, backgroundColor:"white",}}>
                 Item has been Delete!
             </Typography>
         </Snackbar>

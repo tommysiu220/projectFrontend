@@ -16,7 +16,7 @@ export default function AddToCartSuccessSnackbar({snackbarOpen, setSnackbarOpen}
             onClose={() => setSnackbarOpen(false)}
         >
 
-            <Typography sx={{border: "2px black solid", padding: 1, textAlign: "center", backgroundColor:"White"}}>
+            <Typography sx={{border: "2px black solid", padding: 1, textAlign: "center", backgroundColor:"white"}}>
                 Item has been added.
                 <br/>
                 <Link to="/shoppingcart"
