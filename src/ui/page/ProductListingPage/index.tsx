@@ -50,17 +50,13 @@ export default function ProductListingPage() {
         >
           <source src="https://fsse2401-project-tommy.s3.ap-southeast-1.amazonaws.com/productpage.mp4"/>
         </video>
-        <div
-          className="product-listing-description unselectable"
-        >
+        <div className="product-listing-description unselectable">
           You miss the shot
           <div style={{height: "1rem"}}></div>
-
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           you don't take
         </div>
-        <div
-          className="shop-now-button unselectable"
+        <div className="shop-now-button unselectable"
           onClick={handleShopNowClick}
         >
           SHOT NOW !

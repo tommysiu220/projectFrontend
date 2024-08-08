@@ -1,0 +1,117 @@
+/*@font-face {*/
+/*    font-family: 'CustomFont'; !* Name to use for the font *!*/
+/*    src: url("blanka.otf") format('truetype'); !* Path to the font file *!*/
+/*}*/
+
+@keyframes fadeUp {
+    0% {
+        opacity: 0;
+        transform: translateY(32px) scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes fadeDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-32px) scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.thankyou-logo {
+    text-align: center;
+    font-size: 5rem;
+    letter-spacing: 1rem;
+    margin: 3rem auto;
+    width:100%;
+    font-family: "CustomFont", sans-serif;
+    animation: fadeDown 1s 0.5s backwards;
+    transform: translate(1%);
+}
+
+.thankyou-msg-container{
+    display:flex;
+    flex-direction:column;
+    position: absolute;
+    width:80%;
+    bottom: 5%;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.thankyou-content-1{
+    display: flex;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 500;
+    text-align: center;
+    margin:1rem 0;
+    animation: fadeUp 1s 0.5s backwards;
+
+}
+
+.thankyou-content-2{
+    display: flex;
+    justify-content: center;
+    font-size: 1rem;
+    text-align: center;
+    animation: fadeUp 1s 1s backwards;
+}
+
+.thankyou-content-3{
+    display: flex;
+    justify-content: center;
+    font-size: 1rem;
+    text-align: center;
+    animation: fadeUp 1s 1.5s backwards;
+}
+
+
+.thankyou-to-home{
+    font-size: 1rem;
+    font-weight: 500;
+    background-color: black;
+    border-radius: 0;
+    color: white;
+    border: 0;
+    padding: 0.5rem 1rem;
+    margin: 1rem auto;
+    animation: fadeUp 1s 1.8s backwards;
+}
+
+@media (max-width: 900px){
+    .thankyou-logo {
+        font-size: 3.5rem;
+        letter-spacing: 0.5rem;
+    }
+
+    .thankyou-content-1{
+        font-size: 1.5rem;
+
+    }
+
+}
+
+@media (max-width: 600px){
+    .thankyou-logo {
+        font-size: 2rem;
+        letter-spacing: 0.2rem;
+    }
+
+    .thankyou-content-1{
+        font-size: 1rem;
+        font-weight: 500;
+    }
+
+    .thankyou-content-2 ,.thankyou-content-3, .thankyou-to-home{
+        font-size: 0.8rem;
+    }
+
+}
