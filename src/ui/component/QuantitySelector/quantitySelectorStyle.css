@@ -53,6 +53,10 @@
     outline: none;
 }
 
+.swiper-slide-prev{
+    background-image:none;
+}
+
 @media (max-width: 850px) {
     .plus-button, .minus-button, .disabled-minus-button, .disabled-plus-button{
         height: 28px;

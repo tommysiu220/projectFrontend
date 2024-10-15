@@ -22,10 +22,10 @@ export default function CheckoutContainer({transactionDto}: CheckoutContainerPro
         border: "2px solid black",
         borderRadius: 0,
         padding: "16px",
-        minHeight: "70vh",
+        // height: "85vh",
         boxSizing: "border-box",
         backgroundColor: "white",
-        margin: "0 24px",
+        margin: "0 24px 12px 24px",
       }}>
         <Typography variant="h5" sx={{
           textAlign: "center",
@@ -61,7 +61,7 @@ export default function CheckoutContainer({transactionDto}: CheckoutContainerPro
 
             <Divider sx={{border: 1}}/>
 
-            <div style={{height: '52vh', overflowY: 'auto'}}>
+            <div style={{height: '52vh', overflowY: 'auto', margin:"12px 0"}}>
               {
                 transactionDto.items.map((item) => {
                   return (

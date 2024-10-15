@@ -32,7 +32,7 @@ export default function ProductListingPage() {
 
 
   useEffect(() => {
-    setTimeout(fetchGetAllProductDto, 0);
+    fetchGetAllProductDto();
   }, []);
 
   return (

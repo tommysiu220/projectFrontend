@@ -63,8 +63,8 @@ export default function ShoppingCartTableRow({dto, cartItemDtoList, setCartItemD
         item.pid !== pid
       ));
       setCartItemDtoList(updateDtoList)
-      setSuccessfulDelete(true)
       setIsPatching(false);
+      setSuccessfulDelete(true);
     } catch (error) {
       navigate("/error");
     }

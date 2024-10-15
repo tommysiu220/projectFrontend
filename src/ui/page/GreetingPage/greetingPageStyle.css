@@ -1,7 +1,7 @@
-.landing-background{
+.greeting-background{
     background-color: black;
     height:65%;
-    background-image: url('/Users/tommysiu220/Desktop/Venturenix/Project/projectFrontend/project_frontend/src/ui/img/blackballBackground.jpeg');
+    background-image: url('https://i.imgur.com/22nZghr.jpeg');
     background-size: cover;
     background-position: center top;
 

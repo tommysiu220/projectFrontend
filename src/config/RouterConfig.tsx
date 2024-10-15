@@ -6,9 +6,8 @@ import CheckoutPage from "../ui/page/CheckoutPage";
 import LoginPage from "../ui/page/LoginPage";
 import ThankyouPage from "../ui/page/ThankyouPage";
 import ErrorPage from "../ui/page/ErrorPage";
-import LandingPage from "../ui/page/LandingPage";
+import GreetingPage from "../ui/page/GreetingPage";
 import LoadingPage from "../ui/page/LoadingPage";
-import Thanks from "../ui/page/Thanks";
 
 
 
@@ -44,14 +43,10 @@ export const router = createBrowserRouter([
     },
     {
         path: "/",
-        element: <LandingPage/>,
+        element: <GreetingPage/>,
     },
     {
         path: "/loading",
         element: <LoadingPage/>,
-    },
-    {
-        path: "/thanks",
-        element: <Thanks/>,
     },
 ])

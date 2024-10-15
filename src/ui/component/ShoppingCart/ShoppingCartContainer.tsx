@@ -6,6 +6,7 @@ import {useNavigate} from "react-router-dom";
 import * as TransactionApi from "../../../api/TransactionApi.ts";
 import ShoppingCartTableRow from "./ShoppingCartTableRow.tsx";
 import "./shoppingCartContainerStyle.css"
+import EmptyCart from "./EmptyCart.tsx";
 
 type Props = {
   cartItemDtoList: CartItemDto[];
@@ -52,7 +53,7 @@ const ShoppingCartContainer = ({cartItemDtoList, setCartItemDtoList}: Props) => 
           <div className="cart-item">
             {
               cartItemDtoList.length === 0
-                ? <Typography>Empty Cart</Typography>
+                ? <EmptyCart/>
                 : <div style={{backgroundColor: "white"}}>
                   <Grid container>
 
@@ -128,7 +129,7 @@ const ShoppingCartContainer = ({cartItemDtoList, setCartItemDtoList}: Props) => 
                   <Grid item xs={6} textAlign="right">
                     <Typography>
                       {
-                        totalPrice > 2500
+                        (totalPrice > 2500 ) || (totalPrice===0)
                           ? "FREE"
                           : "HKD 100"
                       }

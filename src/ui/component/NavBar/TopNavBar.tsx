@@ -9,7 +9,6 @@ import homeIcon from './home.png'
 import {UserData} from "../../../data/user/UserData.ts";
 import {LoginUserContext} from "../../../context/LoginUserContext.ts";
 import * as FirebaseAuthService from "../../../authService/FirebaseAuthService.ts"
-import ShoppingCartDrawer from "../ShoppingCart/ShoppingCartDrawer.tsx";
 import "./TopNavStyle.css"
 
 
@@ -17,7 +16,6 @@ const TopNavBar = () => {
 
   const loginUser = useContext<UserData | null | undefined>(LoginUserContext);
   const [isVisible, setIsVisible] = useState(false);
-  const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
   const [lastScrollTime, setLastScrollTime] = useState(Date.now());
   const [isHovered, setIsHovered] = useState(false);
   const navigate = useNavigate();
@@ -179,7 +177,6 @@ const TopNavBar = () => {
 
         </Toolbar>
       </AppBar>
-      <ShoppingCartDrawer drawerOpen={drawerOpen} setDrawerOpen={setDrawerOpen}/>
     </>
 
   );

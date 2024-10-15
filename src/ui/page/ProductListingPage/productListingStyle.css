@@ -1,13 +1,10 @@
-@font-face {
-    font-family: 'CustomFont';
-    src: url("../ShoppingCartPage/blanka.otf") format('truetype');
-}
-
 :root {
     --glow-color: rgba(255,255,255);
 }
 .all-product-list{
-    margin: 20px;
+    padding:0 20px 100px 20px;
+    background-image: url('https://imgur.com/mKtt5pW.png');
+    background-repeat: repeat;
 }
 .product-listing-description{
     position: absolute;
@@ -88,9 +85,10 @@
     font-size: 60px;
     letter-spacing: .1em;
     margin: 16px 0 32px 0;
+
 }
 
-@media (max-width: 850px) {
+@media (max-width: 900px) {
     .product-listing-description{
         font-size: 36px;
     }
@@ -99,9 +97,12 @@
         bottom: 7%;
         padding: 0 4px 8px 8px;
     }
+    .product-list-heading{
+        font-size: 48px;
+    }
 }
 
-@media (max-width: 520px) {
+@media (max-width: 600px) {
     .product-listing-description{
         font-size: 24px;
         right: auto;
@@ -115,8 +116,7 @@
         left: auto;
     }
     .product-list-heading{
-        font-size: 48px;
+        font-size: 40px;
         margin-bottom: 24px;
-        margin-top: 0;
     }
 }

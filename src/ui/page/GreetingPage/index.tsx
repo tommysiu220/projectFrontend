@@ -1,16 +1,16 @@
 import {Box} from "@mui/material";
-import "./landingStyle.css";
+import "./greetingPageStyle.css";
 import {useNavigate} from "react-router-dom";
 
 
-export default function LandingPage() {
+export default function GreetingPage() {
   const navigate = useNavigate();
 
   return (
     <>
       <Box sx={{height: "100vh"}}>
         <Box sx={{height: "35%", backgroundColor: "black"}}/>
-        <Box className="landing-background"/>
+        <Box className="greeting-background"/>
       </Box>
 
       <Box sx={{
