@@ -134,7 +134,6 @@ const TopNavBar = () => {
           opacity: isVisible || isHovered ? "1" : "0",
           position: "fixed",
           top: "0",
-          // minHeight: "80px"
         }}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
