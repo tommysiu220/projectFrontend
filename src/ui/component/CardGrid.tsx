@@ -16,7 +16,6 @@ const CardGrid = ({getAllProductDtoList}: Props) => {
       {getAllProductDtoList.map((item) => (
         <Grid key={item.pid} item xs={12} sm={6} md={4} sx={{padding: 0}}>
           <Card sx={{
-            // color: "white",
             padding: 0,
             border: "2px solid grey",
             borderRadius: 0,
